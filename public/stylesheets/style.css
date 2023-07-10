@@ -84,6 +84,39 @@ a {
 }
 
 
+/* home page css code------------------------ */
+.homepage{
+	width: 100%;
+	height: 40vh;
+	/* background-color: green; */
+}
+.swiper {
+	width: 80%;
+   height: 100%;
+   /* background-color: #285e9c; */
+ }
+ 
+ .swiper-slide {
+   text-align: center;
+   font-size: 18px;
+   background: #fff;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+ 
+ .swiper-slide img {
+   display: block;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+ }
+ 
+ .swiper {
+   margin-left: auto;
+   margin-right: auto;
+ }
+
 /* ================================= 
   Media Queries
 ==================================== */
@@ -115,3 +148,5 @@ a {
 	}
 
 }
+
+
