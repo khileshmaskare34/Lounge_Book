@@ -92,7 +92,7 @@ a {
 
 
 @media (min-width: 769px) {
-	.header,
+.header,
 	.main-nav {
 		display: flex;
 	}
@@ -104,7 +104,7 @@ a {
 		margin: 0 auto;
 		max-width: 1150px;
 	}
-	}
+	}	
 
 }
 
