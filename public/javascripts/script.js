@@ -23,3 +23,7 @@ var swiper = new Swiper(".mySwiper", {
         // Add your code here
       });
     /* written by anmol header jisme chhose krna time and station ==end */
+
+
+    // code of menu in navbar 
+    // Toggle menu when the menu icon is clicked
