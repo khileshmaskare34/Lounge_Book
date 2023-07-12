@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/login.css">
+</head>
+<body>
+      <div class="form-container">
+        <h2>Login</h2>
+        <form class="login-form">
+          <div>
+            <input type="text" id="username" placeholder="Username" required />
+          </div>
+          <div>
+            <input type="password" id="password" placeholder="Password" required/>
+          </div>
+          <button type="submit">Login</button>
+          <p class="toggle-form-login">Already registered? Click here to login</p>
+        </form>
+  
+        <form class="register-form" action="/register" method="post">
+          <h2>Register</h2>
+          <div>
+            <input type="text" id="fullname" placeholder="Full Name" name="name" required />
+          </div>
+          <div>
+            <input type="email" id="email" placeholder="Email" name="email" required />
+          </div>
+          <div>
+            <input type="text" id="username" placeholder="username" name="username" required />
+          </div>
+          <div>
+            <input type="password" id="password" placeholder="Password" name="password" required/>
+          </div>
+          <button type="submit">Register</button>
+          <p class="toggle-form-register">Not registered? Click here to register</p>
+        </form>
+      </div>
+</body>
+</html> 
