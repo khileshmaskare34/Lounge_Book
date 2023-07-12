@@ -57,6 +57,12 @@ html,body {
 		background-color: red;
 		color: white;
 		cursor: pointer;
+		
+	  }
+
+	  #search-btn{
+		margin-left: 1.4vw;
+		
 	  }
 		/* written by anmol header jisme chhose krna time and station ==end */
 	

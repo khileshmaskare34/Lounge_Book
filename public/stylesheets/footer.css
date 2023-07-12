@@ -37,6 +37,7 @@ footer {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    
     margin-right: 70px;
 }
 
@@ -73,5 +74,10 @@ hr {
 
     .footer-link-div {
         flex-direction: column;
+    }
+    .footer-icon i {
+        margin-right: 10px;
+        font-size: 10px;
+       
     }
 }
