@@ -9,7 +9,7 @@ router.get('/get-started', function(req, res, next) {
   res.render('get-started', { title: 'Express' });
 });
 router.get('/new-user', function(req, res, next) {
-  res.render('newuser', { title: 'Express' });
+  res.render('new-user', { title: 'Express' });
 });
 
 module.exports = router;

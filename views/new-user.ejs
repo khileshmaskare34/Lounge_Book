@@ -2,7 +2,61 @@
 <html>
 <head>
   <title>User Registration</title>
- <link rel="stylesheet" href="\stylesheets\newuser.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .google-btn {
+      background-color: #DB4437;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -31,6 +85,24 @@
     </form>
   </div>
 
- <script src="\javascripts\newuser.js"></script>
+  <script>
+    function loginWithGoogle() {
+      // Implement your logic for Google login here
+      alert('Google login clicked');
+    }
+
+    document.getElementById("registration-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      // Fetch form values
+      var name = document.getElementById("name").value;
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+      var phone = document.getElementById("phone").value;
+
+      // Implement your logic for user registration here
+      alert('Registration successful!');
+    });
+  </script>
 </body>
 </html>
