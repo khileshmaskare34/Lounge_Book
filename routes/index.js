@@ -8,6 +8,8 @@ router.get('/', function(req, res, next) {
 router.get('/get-started', function(req, res, next) {
   res.render('get-started', { title: 'Express' });
 });
-
+router.post('/new-user', function(req, res, next) {
+  res.render('newuser', { title: 'Express' });
+});
 
 module.exports = router;

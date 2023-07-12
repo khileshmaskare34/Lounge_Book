@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Registration</title>
+ <link rel="stylesheet" href="\stylesheets\newuser.css">
+</head>
+<body>
+  <div class="container">
+    <h2>User Registration</h2>
+    <form id="registration-form">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" required>
+      </div>
+      <button type="submit">Register</button>
+      <div id="google-login" class="form-group">
+        <button class="google-btn" onclick="loginWithGoogle()">Register with Google</button>
+      </div>
+    </form>
+  </div>
+
+ <script src="\javascripts\newuser.js"></script>
+</body>
+</html>
