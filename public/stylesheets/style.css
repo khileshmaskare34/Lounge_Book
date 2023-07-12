@@ -11,6 +11,7 @@ html,body {
 #main{
 	width: 100%;
 	height: 100%;
+	overflow-x: hidden;
 }
 /* Navbar Styles */
 
@@ -57,7 +58,10 @@ html,body {
 		background-color: red;
 		color: white;
 		cursor: pointer;
+		
 	  }
+
+	  
 		/* written by anmol header jisme chhose krna time and station ==end */
 	
 
