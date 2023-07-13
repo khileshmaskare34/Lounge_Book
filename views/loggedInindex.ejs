@@ -6,7 +6,6 @@
   <title>Document</title>
   <link rel="stylesheet" href="./stylesheets/style.css">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
   <link rel="stylesheet" href="/stylesheets/nav.css">
 
 </head>
@@ -55,34 +54,13 @@
       <button id="search-btn">Search</button>
     </div>
 
-
-    <div class="slider">
-
-      <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-
-          <div class="swiper-slide">
-            <img src="https://cloudfront.timesnownews.com/media/D17By1kVAAARQpB.jpg" alt="">
-          </div>
-          <div class="swiper-slide">
-            <img src="https://s3images.zee5.com/wp-content/uploads/2021/09/bb999167-2062-4d49-8c67-8d46e8687d0f2021091214140320210916164756.jpg" alt="">
-          </div>
-          <div class="swiper-slide">
-            <img src="https://images.hindustantimes.com/img/2021/09/19/1600x900/Delhi_IRCTC_Lounge_1632072715277_1632072738699.jpg" alt="">
-          </div>
-         
-        </div>
-      </div>
-
-    </div>
-   
-      
+    <% include ./slider.ejs %>
+    <% include ./about.ejs %>
     <% include ./footer/footer.ejs %>
 
 
   </div>
    
-  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
  <script src="/javascripts/script.js"></script>
 </body>
 </html>

@@ -68,7 +68,9 @@ body {
   border-radius: 3px;
   cursor: pointer;
 }
-
+.form-container .google-btn{
+  margin-top: 1vh;
+}
 .form-container button:hover {
   background-color: #45a049;
 }

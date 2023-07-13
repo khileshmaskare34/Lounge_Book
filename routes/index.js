@@ -20,9 +20,10 @@ router.get('/new-user', function(req, res, next) {
   res.render('new-user', { title: 'Express' });
 });
 
-router.get('/slider', function(req, res){
-  res.render('slider');
+router.get('/register', function(req, res){
+  res.render('register');
 })
+
 
 router.post('/register', function(req, res, next) {
   var newUser = new users({
@@ -34,8 +35,8 @@ router.post('/register', function(req, res, next) {
   users.register(newUser, req.body.password)
   .then(function(u){
     passport.authenticate('local')(req,res, function(){
-      // res.render("loggedInindex"); 
-      res.send("hello product saved");
+      res.render("loggedInindex"); 
+      // res.send("hello product saved");
     })
   })
 });
