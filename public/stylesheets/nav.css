@@ -76,7 +76,7 @@
         z-index: 99999;
        position: absolute;
        right: 0%;
-       top: 13.5vh;
+       top: 10.01vh;
         /* background-color:indianred ; */
         background-color: #f8f8f8;
         text-align: left;
@@ -100,6 +100,9 @@
         right: 5%;
        
     }
+    .header{
+      height: 10vh;
+    }
     .header .logo{
         display: flex;
         position: absolute;
@@ -107,7 +110,7 @@
         left: 3%;
     }
     .header .logo{
-      height: 9.8vh;
+      height: 8vh;
       width: 26vw;
       /* display: flex; */
       }
