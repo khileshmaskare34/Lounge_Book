@@ -20,6 +20,9 @@ router.get('/new-user', function(req, res, next) {
   res.render('new-user', { title: 'Express' });
 });
 
+router.get('/slider', function(req, res){
+  res.render('slider');
+})
 
 router.post('/register', function(req, res, next) {
   var newUser = new users({
