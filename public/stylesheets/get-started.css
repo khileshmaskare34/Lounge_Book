@@ -93,13 +93,17 @@ background-color:#cde9d5;
 
 }
 .get-started-sign>button{
+    margin-top: 8vh;
+}
+.get-started-sign>button a{
     font-size:2vw;
     border-radius: 10px;
-    margin-top: 8vh;
+   
     padding: 1vw 3.5vh;
     border: none;
     color:#ffffff;
     font-weight: 100;
+text-decoration: none;
     /* background-color: #068932; */
     background-color: #d90403;
     font-family: 'Open Sans', sans-serif;
@@ -200,24 +204,27 @@ background-color:#cde9d5;
         width: 57hw;
     
     }
-  
-    .get-started-sign>button>{
+    .get-started-sign>button{
+        margin-top: 7.8vh;
+    }
+    .get-started-sign>button a{
         font-size:3vw;
         border-radius: 10px;
-        margin-top: 1.5vh;
+        margin-top: 13.5vh;
         padding: 1.3vw 4.6vh;
         border: none;
+        text-decoration: none;
         color:#ffffff;
         font-weight: 100;
-        background-color: #068932;
+        /* background-color: #068932; */
         /* background-color: #d90403; */
+        /* background-color: transparent; */
         font-family: 'Open Sans', sans-serif;
         cursor: pointer;
         transition: cubic-bezier(0.19, 1, 0.22, 1)1s;
-       
-        
-    
+        overflow: hidden;
     }
+
     .get-started-sign>button>:hover{
         scale: 1.1;
     }
