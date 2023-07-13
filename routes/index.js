@@ -54,7 +54,6 @@ router.post('/login',passport.authenticate('local',{
  }
 )
 
-
 router.get('/loggedInindex',isLoggedIn,function(req,res,next){
 
   userModel.findOne({username:req.session.passport.user})
@@ -87,7 +86,20 @@ function isLoggedIn(req,res,next ){
 
 
 
+// ___________________________________Provider Login and Provider Register__________________________________
+
+router.get('/provider_login', function(req, res){
+  res.render('provider_login');
+})
+
+router.get('/provider_register', function(req, res){
+  res.render('provider_register');
+})
 
 
+//_________________________________________________Enquiry Page_________________________________________
+router.get('/enquiry', function(req, res){
+  res.render('enquiry');
+})
 
 module.exports = router;
