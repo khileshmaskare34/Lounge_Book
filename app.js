@@ -8,8 +8,8 @@ const expressSession=require("express-session");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-const passport = require('passport');
-const { Passport } = require('passport');
+// const passport = require('passport');
+// const { Passport } = require('passport');
 
 var app = express();
 
@@ -18,16 +18,16 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 
-app.use(expressSession({
-  resave:false,
-  saveUninitialized:false,
-  secret:'hey buddy hey buddy'
-}));
+// app.use(expressSession({
+//   resave:false,
+//   saveUninitialized:false,
+//   secret:'hey buddy hey buddy'
+// }));
 
-app.use(passport.initialize());
-app.use(passport.session());
-passport.serializeUser(usersRouter.serializeUser());
-passport.deserializeUser(usersRouter.deserializeUser());
+// app.use(passport.initialize());
+// app.use(passport.session());
+// passport.serializeUser(usersRouter.serializeUser());
+// passport.deserializeUser(usersRouter.deserializeUser());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
