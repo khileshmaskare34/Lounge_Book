@@ -1,0 +1,149 @@
+/* Default styles for larger screens */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.inputForm {
+    margin-top: 20px;
+}
+
+.seatStructure {
+    margin-top: 20px;
+}
+
+#seatsBlock {
+    border-collapse: collapse;
+    text-align: center;
+    table-layout: fixed;
+    width: 80%;
+}
+
+#seatsBlock td {
+    padding: 5px;
+}
+
+.screen {
+    background-color: #333;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.smallBox {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.greenBox {
+    background-color: green;
+}
+
+.redBox {
+    background-color: red;
+}
+
+.emptyBox {
+    background-color: #ccc;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.displayerBoxes {
+    margin-top: 20px;
+}
+
+.Displaytable {
+    border-collapse: collapse;
+    width: 80%;
+}
+
+.Displaytable th, .Displaytable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.Displaytable th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+.seats {
+    width: 30px;
+    height: 30px;
+}
+.screen {
+    background-color: #333;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+}
+
+/* Style for the "smallBox" class */
+.smallBox {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Style for different smallBox colors */
+.greenBox {
+    background-color: green;
+}
+
+.redBox {
+    background-color: red;
+}
+
+.emptyBox {
+    background-color: #ccc;
+    color: #333;
+}
+
+/* Responsive styles for smaller screens */
+@media only screen and (max-width: 768px) {
+    body {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+
+    .inputForm, .seatStructure, .displayerBoxes {
+        width: 90%; /* Reduce width for smaller screens */
+    }
+
+    #seatsBlock {
+        width: 100%; /* Make the table full-width for smaller screens */
+    }
+
+    .smallBox {
+        width: 15px; /* Reduce the size of small boxes for smaller screens */
+        height: 15px;
+    }
+    .seats {
+        width: 20px;
+        height: 20px;
+    }
+    .screen {
+        padding: 5px;
+    }
+
+}
