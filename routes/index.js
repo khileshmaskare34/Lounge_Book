@@ -23,7 +23,12 @@ router.get('/new-user', function(req, res, next) {
 router.get('/register', function(req, res){
   res.render('register');
 })
-
+router.get('/shofa', function(req, res){
+  res.render('shofa');
+})
+router.get('/shetbook', function(req, res){
+  res.render('shetbook');
+})
 
 router.post('/register', function(req, res, next) {
   var newUser = new users({

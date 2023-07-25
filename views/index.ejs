@@ -21,9 +21,9 @@
 
 
     <!--      written by anmol header jisme chhose krna time and station-->
-    <div class="functions">
+    <div class="functions" aria-required="true">
       <label for="station">Choose Station:</label>
-      <select id="station">
+      <select id="station" required>
         <option value="station1">Station 1</option>
         <option value="station2">Station 2</option>
         <option value="station3">Station 3</option>
@@ -31,13 +31,13 @@
       </select>
   
       <label for="check-in-time">Check-in Time:</label>
-      <input type="time" id="check-in-time" step="1800">
+      <input type="time" id="check-in-time" step="1800" required>
   
       <label for="check-out-time"> Check-out Time:</label>
-      <input type="time" id="check-out-time" step="1800">
+      <input type="time" id="check-out-time" step="1800" required>
     
       <label for="beds">Number of Beds:</label>
-      <select id="beds">
+      <select id="beds" required  >
         <option value="1">1 bed</option>
         <option value="2">2 beds</option>
         <option value="3">3 beds</option>
@@ -45,7 +45,7 @@
       </select>
   
       <button id="search-btn">
-        <a href="/enquiry">Search</a>
+        <a href="/shetbook">Search</a>
       </button>
     </div>
     <!-- /* written by anmol header jisme chhose krna time and station ==end */ -->
