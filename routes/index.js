@@ -26,15 +26,14 @@ router.get('/new-user', function(req, res, next) {
 router.get('/register', function(req, res){
   res.render('register');
 })
-<<<<<<< HEAD
-=======
+
 router.get('/shofa', function(req, res){
   res.render('shofa');
 })
 router.get('/shetbook', function(req, res){
   res.render('shetbook');
 })
->>>>>>> c0d656c64047b4080769c8a28152433d327b7e5b
+
 
 router.post('/register', function(req, res, next) {
   var newUser = new users({
