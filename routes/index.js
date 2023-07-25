@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken')
 const providerModel = require("./providerModel")
 const loungeRegistration = require("./loungeModelSchema");
 const users = require('./users');
-
+const isLoggedIn = require('./../module/isLoggedIn')
 
 
 
@@ -20,10 +20,12 @@ router.get('/new-user', function(req, res, next) {
   res.render('new-user', { title: 'Express' });
 });
 
+
+
+// ______________________________________User Register Page_____________________________
 router.get('/register', function(req, res){
   res.render('register');
 })
-
 
 router.post('/register', function(req, res, next) {
   var newUser = new users({
@@ -41,16 +43,21 @@ router.post('/register', function(req, res, next) {
       }
     );
     res.cookie('Token', token, { httpOnly: true, maxAge: 1.728e8 });
-    res.cookie('user_email', newUser.Email);
-    res.send('user saved')
+    res.cookie('user_email', newUser.email);
+    res.render('loggedInindex');
   })
 });
 
+router.get('/userAccountPage',  async  function(req, res, next){
+  let email = req.cookies.user_email;
+  let user = await users.findOne({email:email});
+  res.render('userAccountPage', {user})
+})
 
+// ___________________________________User Login Page______________________________
 
 router.get('/login',function(req,res,next){
   res.render("login");
-  // res.send("hello");
 })
 
 router.post('/login',async (req,res,next)=>{
@@ -78,7 +85,8 @@ router.post('/login',async (req,res,next)=>{
   );
   res.cookie('Token', token, { httpOnly: true, maxAge: 1.728e8 });
   res.cookie('user_email', User.email);
-  res.send('user logged in ')
+  res.render('loggedInindex');
+
 
 
 }
