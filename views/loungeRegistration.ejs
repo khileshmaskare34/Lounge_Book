@@ -66,7 +66,7 @@
     <form id="registration-form" action="/loungeRegistration" method="post">
 
       <div class="form-group">
-        <label for="name">Loung Name</label>
+        <label for="name">Lounge Name</label>
         <input type="text" id="name" name="loungeName" required>
       </div>
 
@@ -80,7 +80,7 @@
         <input type="tel" id="phone" name="loungePhoneNo" >
       </div>
 
-      <input type="text" name="loungeProviderId" value="<%= provider._id%>" style="visibility: hidden;">
+      <input type="text" name="loungeProviderId" value="<%= loungeProvider._id%>" style="visibility: hidden;">
 
       <button type="submit">Register</button>
     </form>

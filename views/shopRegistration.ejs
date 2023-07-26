@@ -63,24 +63,24 @@
   <div class="container">
     <h2>Shop Registration</h2>
 
-    <form id="registration-form" action="/loungeRegistration" method="post">
+    <form id="registration-form" action="/shopRegistration" method="post">
 
       <div class="form-group">
         <label for="name">Shop Name</label>
-        <input type="text" id="name" name="loungeName" required>
+        <input type="text" id="name" name="shopName" required>
       </div>
 
       <div class="form-group">
         <label for="email">Shop Email</label>
-        <input type="email" id="email" name="loungeEmail" required>
+        <input type="email" id="email" name="shopEmail" required>
       </div>
 
       <div class="form-group">
         <label for="phone">Shop Phone Number</label>
-        <input type="tel" id="phone" name="loungePhoneNo" >
+        <input type="tel" id="phone" name="shopPhoneNo" >
       </div>
 
-      <input type="text" name="loungeProviderId" value="<%= provider._id%>" style="visibility: hidden;">
+      <input type="text" name="shopProviderId" value="<%= shopProvider._id%>" style="visibility: hidden;">
 
       <button type="submit">Register</button>
     </form>

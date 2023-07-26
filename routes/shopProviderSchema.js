@@ -3,25 +3,24 @@ const mongoose=require("mongoose");
 
 
 
-var loungeproviderSchema = mongoose.Schema({
- name:{
+var shopProviderSchema = mongoose.Schema({
+ shopName:{
     type :String,
     required: true
  },
- email:{
-   type :String,
-
+ shopEmail:{
+    type :String,
     required: true
  },
- password:{
+ shopPassword:{
     type : String,
     required: true
  },
- phoneNo : {
+ shopPhoneNo : {
     type : Number,
     required: true
  }
 })
 
 
-module.exports = mongoose.model("providerModel",loungeproviderSchema)
+module.exports = mongoose.model("shopProviderModel",shopProviderSchema)

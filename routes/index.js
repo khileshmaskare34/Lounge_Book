@@ -1,8 +1,12 @@
 var express = require('express');
 var router = express.Router();
 const jwt = require('jsonwebtoken')
-const providerModel = require("./providerModel")
+const providerModel = require("./loungeProviderSchema")
 const loungeRegistration = require("./loungeModelSchema");
+
+const shopProviderSchema = require('./shopProviderSchema');
+const shopRegistration= require('./shopModelSchema');
+
 const users = require('./users');
 const isLoggedIn = require('./../module/isLoggedIn')
 
@@ -20,12 +24,6 @@ router.get('/new-user', function(req, res, next) {
   res.render('new-user', { title: 'Express' });
 });
 
-
-
-// ______________________________________User Register Page_____________________________
-router.get('/register', function(req, res){
-  res.render('register');
-})
 router.get('/shofa', function(req, res){
   res.render('shofa');
 })
@@ -33,11 +31,23 @@ router.get('/shetbook', function(req, res){
   res.render('shetbook');
 })
 
+router.get('/userAccountPage',  async  function(req, res, next){
+  let email = req.cookies.user_email;
+  let user = await users.findOne({email:email});
+  res.render('userAccountPage', {user})
+})
+
+
+// ______________________________________User Register Page_____________________________
+
+router.get('/register', function(req, res){
+  res.render('register');
+})
+
 router.post('/register', function(req, res, next) {
   var newUser = new users({
     name:req.body.name,
     email:req.body.email,
-    // username:req.body.username,
     password:req.body.password  
   })
   newUser.save().then(function(){
@@ -54,11 +64,6 @@ router.post('/register', function(req, res, next) {
   })
 });
 
-router.get('/userAccountPage',  async  function(req, res, next){
-  let email = req.cookies.user_email;
-  let user = await users.findOne({email:email});
-  res.render('userAccountPage', {user})
-})
 
 // ___________________________________User Login Page______________________________
 
@@ -69,19 +74,20 @@ router.get('/login',function(req,res,next){
 router.post('/login',async (req,res,next)=>{
   const email = req.body.email
   const pass = req.body.password
-  console.log(pass)
+  // console.log("this is user" + email)
   if (!email || !pass) {
     console.log('please enter password')
     return next('please enter valid email or password sp fdf');
   }
 
   const User = await  users.findOne({ email: email });
-  console.log(User)
-  if (!User || !pass == User.password) {
+  // console.log(User.password)
+  if(!User || !(pass ===  User.password)){
     console.log("please provide correct email or password")
-    return next('enter the correcr cridentals');
+    // return next('enter the correcr cridentals');
+    res.send("please provide the right email or password");
   }
-  console.log(User );
+ 
   const token = jwt.sign(
     { id: User._id },
     'mynameispulkitupadhyayfromharda',
@@ -97,6 +103,7 @@ router.post('/login',async (req,res,next)=>{
 
 }
 )
+// _____________________LoungeProviderLogin_______________________
 
 router.post('/loungeProviderLogin', async function(req, res, next){
   var email = req.body.email
@@ -108,10 +115,9 @@ router.post('/loungeProviderLogin', async function(req, res, next){
   
 
   const LoungeUser = await providerModel.findOne({email : email})
-  console.log(LoungeUser);
-  if (!LoungeUser || !pass == LoungeUser.password) {
-    console.log("please provide correct email or password")
-    return next('enter the correcr cridentals');
+  // console.log(LoungeUser);
+  if (!LoungeUser || !(pass === LoungeUser.password)) {
+    res.send("please enter thr right password and email");
   }
   const token = jwt.sign(
     { id: LoungeUser._id },
@@ -147,39 +153,8 @@ router.post('/logout',(req,res,next)=>{
 
 
 
-// router.get('/loggedInindex',isLoggedIn,function(req,res,next){
 
-//   userModel.findOne({name:req.session.passport.user})
-//   .then(function(user){ 
-//     res.render("loggedInindex",{user});
-//   })
-// });
-
-// router.get('/users',isLoggedIn,function(req,res,next){
-
-//   userModel.findOne()
-//   .then(function(user){
-//     res.render("users",{user});
-//   })
-// });
-
-// router.post('/logout',function(req,res){
-//   req.logout(function(err){
-//     if(err){return next(err);}
-
-//     res.redirect('/');
-//   })
-// })
-  
-// function isLoggedIn(req,res,next ){
-//   if(passport.authenticate()){
-//     return next();
-//   }
-// }
-
-
-
-// ___________________________________Provider Login and Provider Register__________________________________
+// _______________LoungeProvider Login and LoungeProvider Register_________________________
 
 router.get('/loungeProvider_login', function(req, res){
   res.render('loungeProvider_login');
@@ -197,9 +172,7 @@ router.get('/shopProvider_login', function(req, res){
   res.render('shopProvider_login');
 })
 
-router.get('/shopProvider_register', function(req, res){
-  res.render('shopProvider_register');
-})
+
 
 router.post('/loungeProviderRegister', function(req, res, next) {
   var newProvider = new providerModel({
@@ -211,8 +184,8 @@ router.post('/loungeProviderRegister', function(req, res, next) {
  
   newProvider.save().then((doc)=>{
     // res.cookie('Token', token, { httpOnly: true, maxAge: 1.728e8 });
-    res.cookie('provider_email', req.body.email);
-    console.log(newProvider.email)
+    res.cookie('loungeProvider_email', req.body.email);
+    console.log(newProvider._id)
 //  var provider =    providerModel.findOne({email: newProvider.email})
     // console.log()
     // res.render('loungeRegistration');
@@ -220,44 +193,63 @@ router.post('/loungeProviderRegister', function(req, res, next) {
   })
 });
 
+
+router.get('/shopProvider_register', function(req, res){
+  res.render('shopProvider_register');
+})
+
 router.post('/shopProviderRegister', function(req, res, next) {
-  var newProvider = new providerModel({
-    name:req.body.name,
-    email:req.body.email,
-    phoneNo:req.body.phoneNo,
-    password:req.body.password 
+  var newShopProvider = new shopProviderSchema({
+    shopName:req.body.shopName,
+    shopEmail:req.body.shopEmail,
+    shopPhoneNo:req.body.shopPhoneNo,
+    shopPassword:req.body.shopPassword 
   })
  
-  newProvider.save().then((doc)=>{
+  newShopProvider.save().then((doc)=>{
     // res.cookie('Token', token, { httpOnly: true, maxAge: 1.728e8 });
-    res.cookie('provider_email', req.body.email);
-    console.log(newProvider.email)
+    res.cookie('shopProvider_email', req.body.shopEmail);
+    // console.log(newShopProvider);
 //  var provider =    providerModel.findOne({email: newProvider.email})
     // console.log()
-    // res.render('loungeRegistration');
-    res.redirect('/shopRegistration');
+    // res.render('shopRegistration');
+    res.redirect('/shopRegistration')
   })
 });
 
-
-//_________________________________________________Enquiry Page_________________________________________
-router.get('/enquiry', function(req, res){
-  res.render('enquiry');
+router.get('/shopRegistration', async (req, res)=>{
+  var email = req.cookies.shopProvider_email;
+  // console.log("this khilesh" + email);
+  var shopProvider = await shopProviderSchema.findOne({email:email})
+  res.render('shopRegistration', {shopProvider});
 })
+
+router.post('/shopRegistration', (req, res)=>{
+  var newShop = new shopRegistration({
+    shopName: req.body.shopName,
+    shopEmail: req.body.shopEmail,
+    shopPhoneNo: req.body.shopPhoneNo,
+    shopProviderId: req.body.shopProviderId
+  })
+  newShop.save().then(function(dets){
+    res.send("shop saved in db");
+  })
+})
+// _________________________________________________Enquiry Page_________________________________________
 
 
 router.get('/loungeRegistration', async(req, res)=>{
-var email = req.cookies.provider_email;
-console.log(email)
-var provider = await providerModel.findOne({email:email})
-console.log(provider)
-res.render('loungeRegistration',{provider});
+var email = req.cookies.loungeProvider_email;
+// console.log("this is lucky" + email)
+var loungeProvider = await providerModel.findOne({email:email})
+// console.log("this is the lucky" + loungeProvider)
+res.render('loungeRegistration',{loungeProvider});
 })
 
 
 router.post('/loungeRegistration', function(req, res){
   var newLounge = new loungeRegistration({
-    loungename: req.body.loungeName,
+    loungeName: req.body.loungeName,
     loungeEmail: req.body.loungeEmail,
     loungePhoneNo: req.body.loungePhoneNo,
     loungeProviderId: req.body.loungeProviderId
@@ -267,4 +259,7 @@ router.post('/loungeRegistration', function(req, res){
   })
 
 })
+
+
+
 module.exports = router;

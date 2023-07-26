@@ -63,52 +63,28 @@
   <div class="container">
     <h2>Shop Provider Registration</h2>
 
-    <form id="registration-form" action="/loungeProviderRegister" method="POST">
+    <form id="registration-form" action="/shopProviderRegister" method="POST">
 
       <div class="form-group">
         <label for="name">Shop Provider Name</label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" id="name" name="shopName" required>
       </div>
       <div class="form-group">
         <label for="email">Shop Provider Email</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="shopEmail" required>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
+        <input type="password" id="password" name="shopPassword" required>
       </div>
       <div class="form-group">
         <label for="phone">Shop Provider Phone Number</label>
-        <input type="tel" id="phone" name="phoneNo" required>
+        <input type="tel" id="phone" name="shopPhoneNo" required>
       </div>
     
       <button type="submit">Register</button>
 
-      <!-- <div id="google-login" class="form-group">
-        <button class="google-btn">Register with Google</button>
-      </div> -->
-
     </form>
   </div>
-
-  <!-- <script>
-    function loginWithGoogle() {
-      // Implement your logic for Google login here
-      alert('Google login clicked');
-    }
-
-    document.getElementById("registration-form").addEventListener("submit", function(event) {
-      event.preventDefault();
-
-      // Fetch form values
-      var name = document.getElementById("name").value;
-      var email = document.getElementById("email").value;
-      var password = document.getElementById("password").value;
-      var phone = document.getElementById("phone").value;
-
-      // Implement your logic for user registration here
-      alert('Registration successful!');
-    });
-  </script> -->
 </body>
 </html>

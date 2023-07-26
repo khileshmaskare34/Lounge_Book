@@ -1,20 +1,20 @@
 const mongoose = require("mongoose");
 mongoose.set('strictQuery',true);
-var loungeSchema = mongoose.Schema({
-    loungeName : {
+var shopSchema = mongoose.Schema({
+    shopName : {
         type : String,
         required : true
     },
-    loungePhoneNo : {
+    shopPhoneNo : {
         type : String
     },
-    loungeEmail :{
+    shopEmail :{
         type : String
     },
-    loungeProviderId :{
+    shopProviderId :{
         type : String,
         required: true
     }
 })
 
-module.exports = mongoose.model("loungeModelSchema", loungeSchema);
+module.exports = mongoose.model("shopModelSchema", shopSchema);
