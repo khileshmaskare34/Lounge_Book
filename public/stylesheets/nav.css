@@ -9,8 +9,9 @@
 	justify-content: space-between;
 	align-items: center;
 	padding: 20px;
-    height: 14.4vh;
+    height: 11.4vh;
 	background-color: #f8f8f8;
+
     position: relative;
 	
   }
@@ -18,7 +19,9 @@
  .header .logo{
 	height: 13vh;
 	width: 15vw;
+  mix-blend-mode: darken;
 	/* display: flex; */
+  
   } 
  
   .navbar {

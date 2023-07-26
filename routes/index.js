@@ -243,9 +243,7 @@ router.post('/shopProviderRegister', function(req, res, next) {
 
 
 //_________________________________________________Enquiry Page_________________________________________
-router.get('/enquiry', function(req, res){
-  res.render('enquiry');
-})
+
 
 
 router.get('/loungeRegistration', async(req, res)=>{
