@@ -24,6 +24,16 @@ router.get('/new-user', function(req, res, next) {
   res.render('new-user', { title: 'Express' });
 });
 
+<<<<<<< HEAD
+=======
+
+
+// ______________________________________User Register Page_____________________________
+router.get('/register', function(req, res){
+  res.render('register');
+})
+
+>>>>>>> e5171e6afdf31a8ec479bf6f20faac523412a4fe
 router.get('/shofa', function(req, res){
   res.render('shofa');
 })
@@ -31,6 +41,7 @@ router.get('/shetbook', function(req, res){
   res.render('shetbook');
 })
 
+<<<<<<< HEAD
 router.get('/userAccountPage',  async  function(req, res, next){
   let email = req.cookies.user_email;
   let user = await users.findOne({email:email});
@@ -43,6 +54,8 @@ router.get('/userAccountPage',  async  function(req, res, next){
 router.get('/register', function(req, res){
   res.render('register');
 })
+=======
+>>>>>>> e5171e6afdf31a8ec479bf6f20faac523412a4fe
 
 router.post('/register', function(req, res, next) {
   var newUser = new users({
@@ -217,12 +230,18 @@ router.post('/shopProviderRegister', function(req, res, next) {
   })
 });
 
+<<<<<<< HEAD
 router.get('/shopRegistration', async (req, res)=>{
   var email = req.cookies.shopProvider_email;
   // console.log("this khilesh" + email);
   var shopProvider = await shopProviderSchema.findOne({email:email})
   res.render('shopRegistration', {shopProvider});
 })
+=======
+
+//_________________________________________________Enquiry Page_________________________________________
+
+>>>>>>> e5171e6afdf31a8ec479bf6f20faac523412a4fe
 
 router.post('/shopRegistration', (req, res)=>{
   var newShop = new shopRegistration({

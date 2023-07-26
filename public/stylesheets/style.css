@@ -13,6 +13,15 @@ html,body {
 	height: 100%;
 	overflow-x: hidden;
 }
+.page1{
+	/* background-color: aqua; */
+	width: 100%;
+	/* height: 88.6vh; */
+	flex-direction: column;
+	overflow: hidden;
+	display: flex;
+	background-color: #dfd6d694;
+}
 /* Navbar Styles */
 
   /* Media Query for Mobile */
@@ -33,38 +42,7 @@ html,body {
     /* written by anmol header jisme chhose krna time and station */
 
 
-	.functions {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 10px;
-		font-family: Arial, sans-serif;
-		padding: 4vw 10vw;
-		background-color: #95a7b8;
-	  }
-  
-	  label {
-		font-weight: bold;
-		color: rgb(64, 50, 50);
-	  }
-  
-	  select, input, button {
-		padding: 5px;
-		border: 1px solid red;
-		border-radius: 4px;
-		font-size: 16px;
-	  }
-	  a{
-		text-decoration: none;
-		color: azure;
-	  }
-  
-	  button {
-		background-color: red;
-		color: white;
-		cursor: pointer;
-		
-	  }
-
+	
 	  
 		/* written by anmol header jisme chhose krna time and station ==end */
 	
@@ -102,19 +80,6 @@ html,body {
 	}
 
 }
-@media screen and (max-width:550){
-	.functions {
-		margin-top: 0px;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		background-color: #a88148;
-		padding: 10px;
-		font-family: "Roboto", sans-serif;
-		height: 200px;
-	  }
 
-	
-}
 
 
