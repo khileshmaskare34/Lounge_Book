@@ -1,7 +1,7 @@
 
 #services{
-  /* width: 100%; */
-  /* height: 100%; */
+  /* width: 100%; 
+   height: 100%; */
   /* background-color: chocolate; */
 }
 #services>h1{
@@ -76,5 +76,25 @@
   }
   .btn{
       margin-top: 1.5vh;
+  }
+}
+/* CSS for iPad */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+  .facilities>img {
+    width: 70%;
+    height: 70%;
+  }
+
+  .facilities-p>ul>li {
+    font-size: 2.5vw;
+    line-height: 2.5vw;
+  }
+  .btn{
+    display: inline-block;
+    padding: 1vh 2vw;
+    background-color: #333333;
+    color: #ffffff;
+    text-decoration: none;
+    margin-top: 3vw;
   }
 }
