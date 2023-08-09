@@ -94,6 +94,10 @@ background-color:#cde9d5;
 }
 .get-started-sign>button{
     margin-top: 8vh;
+   
+    background-color: transparent;
+    border: none;
+
 }
 .get-started-sign>button a{
     font-size:2vw;
@@ -205,9 +209,10 @@ text-decoration: none;
     
     }
     .get-started-sign>button{
+    
         margin-top: 7.8vh;
     }
-    .get-started-sign>button a{
+    .get-started-sinpxgn>button a{
         font-size:3vw;
         border-radius: 10px;
         margin-top: 13.5vh;
@@ -215,6 +220,7 @@ text-decoration: none;
         border: none;
         text-decoration: none;
         color:#ffffff;
+
         font-weight: 100;
         /* background-color: #068932; */
         /* background-color: #d90403; */
@@ -234,12 +240,12 @@ text-decoration: none;
     /* CSS rules specific to iPad Air */
     .get-started {
       /* Your styles for .get-started on iPad Air */
-       height: 65vh;
+       height: 100vh;
     }
     
     
     .get-started-sign{
-    height:37vh ;
+    height:34vh ;
     }
     
     /* Styles for other elements on iPad Air */
