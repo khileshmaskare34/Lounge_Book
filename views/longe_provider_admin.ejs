@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Namastey loungeProvider  : <%= LoungeUser.name %></h1>
+    
+<center> <h1>your all launges are </h1> </center>
+
+<% for(var i=0;i< his_launges.length; i++){ %>
+    
+    
+<div style="display: flex; border: 2px solid black; margin:4%; flex-direction: column;">
+    <a href="/laungeadminforaddingitems/<%= his_launges[i]._id %>">  <h1>Lounge Name :  <%= his_launges[i].loungeName %></h1> </a>
+    <h1>Owner Name :  <%= LoungeUser.name %></h1>
+    <h1>No Of Seats :  <%=his_launges[i].noOfSeats %></h1>
+    <!-- <h1>No Of Seats :  <%=his_launges[i].noOfSeats %></h1> -->
+
+    <form action="/delete_lounge" method="POST">
+        <input type="text" name="loungeId_for_delete" value="<%= his_launges[i]._id %>" style="visibility: hidden; display: none; ">
+        <button type="submit" style="font-size: 1rem; text-align: center; color: brown; padding: 1%; border-radius: 23%; margin: 3%;" > unlist Delete Launge </button>
+    </form>
+    <form action="/edit_lounge" method="POST">
+        <input type="text" name="loungeId_for_delete" value="<%= his_launges[i]._id %>" style="visibility: hidden; display: none; ">
+       
+        <input type="text" name="loungeName" placeholder="<%= his_launges[i].loungeName %>" >
+        <input type="text" name="loungePhoneNo" placeholder="<%= his_launges[i].loungePhoneNo%>" >
+        <input type="text" name=" loungeEmail" placeholder="<%= his_launges[i].loungeEmail %>" >
+        <input type="text" name="noOfSeats" placeholder="<%= his_launges[i].noOfSeats%>" >
+
+        <button type="submit" style="font-size: 1rem; text-align: center; color: brown; padding: 1%; border-radius: 23%; margin: 3%;" > Edit Launge Information </button>
+    </form>
+</div>
+
+      <% } %>
+
+
+
+</body>
+</html>

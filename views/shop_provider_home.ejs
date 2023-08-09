@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<h1> welcome <%= shopUser.shopName %></h1>
+
+
+
+<h2> your listed shops </h2>
+
+
+<% for(var i=0;i< shops.length; i++){ %>
+  
+  <div style="border: 2px solid black ; padding: 2%;">
+
+  <a href="/shopadminforaddingitems/<%= shops[i]._id %>"> <h1> <%= shops[i].shopName %></h1> </a>
+
+  <form action="/delete_shop" method="post">
+<input type="text" value="<%= shops[i]._id %>" name="shopId_for_delete">
+<button type="submit">delete this shop </button>
+  </form>
+
+</div>
+    <% } %>
+
+
+
+
+    <h2> add a new shop </h2>
+
+<form id="registration-form" action="/shopRegistration" method="post">
+
+    <div class="form-group">
+      <label for="name">Shop Name</label>
+      <input type="text" id="name" name="shopName" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Shop Email</label>
+      <input type="email" id="email" name="shopEmail" required>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Shop Phone Number</label>
+      <input type="tel" id="phone" name="shopPhoneNo" >
+    </div>
+    <div class="form-group">
+      <label for="station">Station Name </label>
+      <input type="text" id="station" name="station" >
+    </div>
+    <input type="text" name="shopProviderId" value="<%= shopUser._id%>" style="visibility: hidden;">
+
+    <button type="submit">Register</button>
+  </form>
+
+</body>
+</html>

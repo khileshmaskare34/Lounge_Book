@@ -14,7 +14,9 @@ body, html {
   background-color: #1c2331;
   color: #fff;
 }
-
+form{
+  display: flex;
+}
 /* Style the form elements */
 label {
   display: block;

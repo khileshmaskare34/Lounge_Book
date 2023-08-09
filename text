@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="\stylesheets\shetbook.css">
+</head>
+<body>
+          
+        loungeName: <strong>[<%= launge.loungeName %>]</strong>
+        Name *: <input type="text" id="Username" required>
+        Number of Seats *: <input type="number" id="Numseats" required>
+        <div class="seatStructure">
+        <center>
+          
+        <table id="seatsBlock" >
+
+<% for(var i=0; i< launge.noOfSeats; i++){%>
+
+  <tr>
+    <!-- <% for(var l=0; i< launge.noOfSeats; i++){%>
+      <% if(i==9){ %>
+        <br> <br>
+       <% } %>
+      <td><%= i+1 %>  </td>
+    <% }%> -->
+</tr>
+<tr>
+ 
+  <form action="/choosen/<%= launge._id %>" method="post">
+  <% for(var i=0; i< launge.noOfSeats; i++){%>
+ <% if(i%10 == 0){ %>
+  <br> 
+ <%}%>
+ <label for="myCheckbox" id="A<%= i+1 %>"> <%=i+1%></label>
+
+    <input type="checkbox" style ="border: 4px solid blue; " class="seats"   name="seat" value="A<%= i+1 %>">
+  <script>
+    
+
+var individual ="A<%= i+1 %>";
+var arrrrrr = []
+// for(var z = 0; z< <%= totalSeats.length %>; z++  ){
+var arr =`<%= totalSeats %>`;
+arrrrrr.push(arr)
+// }
+var array = arrrrrr[0].split(',')
+
+console.log(array)
+console.log(arrrrrr.indexOf(individual))
+
+// let age = 12;
+// sessionStorage.setItem('userData', age);
+  var kuch = document.querySelector('#A<%= i+1 %>')
+// var seat = document.querySelector('')
+// console.log(seat)
+if (array.indexOf(individual) == -1){
+
+// seat.style.border = '2px solid red';
+}else{
+// console.log(seat)
+kuch.style.backgroundColor = 'red';
+  
+}
+  arr='';
+  </script>
+  <% }%>
+  
+
+  
+</tr>
+<br/><button type="submit" >Confirm Selection</button>
+
+</form>
+<% }%>
+          
+        </table>
+          
+        </center>
+        </div>
+              
+        <br/><br/>
+        
+        <div class="displayerBoxes">
+        <center>
+          <table class="Displaytable">
+          <tr>
+            <th>Name</th>
+            <th>Number of Seats</th>
+            <th>Seats</th>
+          </tr>
+          <tr>
+            <td><textarea id="nameDisplay"></textarea></td>
+            <td><textarea id="NumberDisplay"></textarea></td>
+            <td><textarea id="seatsDisplay"></textarea></td>
+          </tr>
+        </table>
+        </center>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+         <script src="\javascripts\shetbook.js"></script>
+         
+        </body>
+</html>
+
+
+
+

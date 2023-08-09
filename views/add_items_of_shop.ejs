@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<h1> <%= newShop.shopName %></h1>
+
+
+<h1> Add items in your shop
+
+</h1>
+    <form action="/add_items" class="for_add_items" method="POST">
+<span>Item name </span>
+<input type="text" name="item_name">
+
+<span>description</span>
+<input type="text" name="description">
+    
+
+<span>image</span>
+<input type="text" name="item_image">
+
+<span>price</span>
+<input type="number" name="item_price">
+
+<input type="text" name="shopId" value="<%= newShop.shopEmail %>">
+
+<button type="submit">submit</button>
+
+</form>
+
+
+</body>
+</html>

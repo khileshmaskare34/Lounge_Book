@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<h1> your items are </h1>
+<% for(var i=0;i< items.length; i++){ %>
+
+    <div style=" border: 2px solid black;">
+  <h1>Item Name :  <%= items[i].item_Name  %> </h1>
+  <h1>Item price :  <%= items[i].price %> </h1>
+  <h1>Item description :  <%= items[i].description %> </h1>
+
+
+  <form action="/delete_item" method="post">
+    <input type="text" name="itemId_for_delete" value="<%= items[i]._id %>" style="visibility: hidden; display: none;">
+<button type="submit"> Delete Item From your shop </button>
+</form>
+
+
+<form action="/edit_item" method="post">
+    <input type="text" name="itemId_for_delete" value="<%= items[i]._id %>" style="visibility: hidden;">
+
+    <input type="text" name="item_Name" placeholder="<%= items[i].item_Name%>">
+    <input type="text" name="description" placeholder="<%= items[i].description %>">
+    <input type="text" name="Image" placeholder="<%= items[i].Image %>">
+    <input type="text" name="price" placeholder="<%= items[i].price %>">
+    <input type="text" name="shop_id" value="<%= items[i].shop_id %>" style="visibility: hidden; display: none;">
+
+    <button type="submit"> edit item </button>
+</form>
+
+</div>
+
+
+    <% } %>
+
+   <a href="/add_items/<%= perticuler_shop._id %>"><button>add more items </button></a> 
+
+</body>
+</html>

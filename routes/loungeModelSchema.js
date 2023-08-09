@@ -14,6 +14,12 @@ var loungeSchema = mongoose.Schema({
     loungeProviderId :{
         type : String,
         required: true
+    },
+    noOfSeats:{
+        type:Number
+    },
+    stationLocation:{
+        type: String
     }
 })
 

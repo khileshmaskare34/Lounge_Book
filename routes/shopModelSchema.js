@@ -14,6 +14,10 @@ var shopSchema = mongoose.Schema({
     shopProviderId :{
         type : String,
         required: true
+    },
+    station_Name :{
+        type: String,
+        required: true
     }
 })
 
