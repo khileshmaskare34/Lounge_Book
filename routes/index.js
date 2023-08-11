@@ -26,6 +26,10 @@ const add_lounges = require('./controllers/lounge/add_lounges')
 const lounge_provider_login = require('./controllers/Lounge_Provider/lounge_provider_login')
 
 
+const multer = require('multer')
+const path=require('path');
+
+
 
 
 //  ************** The scheduler which runs every 1 hour and 1 minut ******************
@@ -54,6 +58,29 @@ schedule.scheduleJob('1 */1 * * *', () => {
 
 
 
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< multer >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+var storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, './../public/upload'), function () {
+      if (err) {
+        throw err;
+      }
+    });
+  },
+  filename: (req, file, cb) => {
+    const name = Date.now() + '-' + file.originalname;
+    cb(null, name, (error, sucess) => {
+      if (error) {
+        throw error;
+      }
+    });
+  },
+});
+
+var upload = multer({ storage: storage });
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<multer>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
 
@@ -403,9 +430,29 @@ router.post('/shopRegistration', async(req, res)=>{
   })
 })
 
+let ff;
 
+router.post('/add_items', upload.single("image"), async (req,res,next)=>{
 
-router.post('/add_items',async (req,res,next)=>{
+try {
+  if((ff.mimetype).split('/').pop()=="png" || (ff.mimetype).split('/').pop()=="jpg" || (ff.mimetype).split('/').pop()=="jpeg" || (ff.mimetype).split('/').pop()=="mp4"){
+
+    data={
+        Image:ff.originalname
+    }
+
+    arr.push(data)
+    await shop_items.insertMany([data])
+    // await collection.deleteMany({})
+
+  }
+  else{
+    res.send("inavlid file")
+  }
+
+} catch (error) {
+  console.log(error);
+}
 
 var new_item = new shop_items({
 item_Name: req.body.item_name,

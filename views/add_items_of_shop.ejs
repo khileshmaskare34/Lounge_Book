@@ -4,34 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        .items{
+            display: flex;
+            justify-content: center;
+        }
+         form{
+             width: 80vw;
+             height: 90vh;
+             background-color: rgb(185, 199, 199);
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             justify-content: center;
+             
+         }
+         h1{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 400%;
+            margin-top:0.1vh;
+         }
+         h2{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 200%;
+            margin-top:0.1vh;
+         }
+         span{
+            font-size: 180%;
+            /* margin-left: 0.3vw; */
+         }
+         input{
+        margin-left: 5vw;
+        font-size: 150%;
+     }
+     button{
+        font-size: 180%;
+        margin-top: 5vh;
+        font-weight: 550;
+        border-radius: 5px;
+     }
+    @media  screen and (max-width:600px) {
+        form{
+            width: 100vw;
+            height: 100vh;
+        }
+    }
+
+    
+</style>
 </head>
 <body>
     
-<h1> <%= newShop.shopName %></h1>
+    <div class="items">
 
-
-<h1> Add items in your shop
-
-</h1>
-    <form action="/add_items" class="for_add_items" method="POST">
-<span>Item name </span>
-<input type="text" name="item_name">
-
-<span>description</span>
-<input type="text" name="description">
+        <form action="/add_items" class="for_add_items" method="POST">
+            <h1> <%= newShop.shopName %></h1>
+    <h2> Add items in your shop</h2>
+    <div class="add_item">
+    <span>Item name :-</span>
+    <input type="text" name="item_name" placeholder="item name">
+    </div>
+    <br>
+    <div class="add_item">
+    <span>Description :-</span>
+    <input type="text" name="description" placeholder="add description">
+    </div>
+    <br>
+        
+    <div class="add_item">
+    <span>Image :-</span>
+    <input type="text"   name="item_image" placeholder="add image or image url">
+    </div>
+    <br>
+    <div class="add_item">
+    <span>Price :-</span>
+    <input type="number" name="item_price" placeholder="add price">
+    </div>
+    <br>
+    <div class="add_item">
+    <span>Email :-</span>
+    <input type="text" name="shopId" value="<%= newShop.shopEmail %>">
+    </div>
+    <br>
     
-
-<span>image</span>
-<input type="text" name="item_image">
-
-<span>price</span>
-<input type="number" name="item_price">
-
-<input type="text" name="shopId" value="<%= newShop.shopEmail %>">
-
-<button type="submit">submit</button>
-
-</form>
+    <button type="submit">submit</button>
+    
+    </form>
+    </div>    
 
 
 </body>
