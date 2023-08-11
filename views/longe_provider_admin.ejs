@@ -35,7 +35,42 @@
     </form>
 </div>
 
-      <% } %>
+<% } %>
+
+<h1>add new lounge</h1>
+
+<form id="registration-form" action="/loungeRegistration" method="post">
+
+    <div class="form-group">
+      <label for="name">Lounge Name</label>
+      <input type="text" id="name" name="loungeName" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Lounge Email</label>
+      <input type="email" id="email" name="loungeEmail" required>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Lounge Phone Number</label>
+      <input type="tel" id="phone" name="loungePhoneNo" >
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Lounge No Of Seats</label>
+      <input type="tel" id="phone" name="noOfSeats" >
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Station Name</label>
+      <input type="tel" id="phone" name="stationLocation" >
+    </div>
+
+    <input type="text" name="loungeProviderId" value="<%= loungeProvider._id%>" style="visibility: hidden;">
+
+    <button type="submit">Register</button>
+  </form>
+     
 
 
 

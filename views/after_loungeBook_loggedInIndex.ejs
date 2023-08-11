@@ -6,7 +6,11 @@
   <title>Document</title>
   <link rel="stylesheet" href="./stylesheets/style.css">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet">
+
+
   <link rel="stylesheet" href="/stylesheets/nav.css">
+  <link rel="stylesheet" href="/stylesheets/shop_menu.css">
+   <link rel="stylesheet" href="">
 
 </head>
 <body>
@@ -28,31 +32,40 @@
     
     
    
-    <div class="functions">
-      <form action="/choiceFilling" method="post">
-       <label for="station">Choose Station:</label>
-   
-       <select id="station" name="stationName">
-         <% for(var i=0;i< station.length; i++){ %>
-         <option value="<%= station[i] %>" name="<%= station[i] %>" ><%= station[i] %></option>
-         <% } %>
-       </select>
-   
-       <label for="check-in-time">Check-in Time:</label>
-       <!-- <input type="time" name="chekIn" id="check-in-time"> -->
-       <input type="datetime-local" id="check-in-time" name="checkIn">
-       <!-- <input type="time" id="check-in-time" name="checkIn"> -->
+  
 
-   
-       <label for="check-out-time"> Check-out Time:</label>
-       <input type="number" name="hours" id="check-out-time">
+
+   <% include ./function.ejs %>
+    
+  <div class="shop_menu_section">
+       <h1>khilesdf n</h1>
+       <h1> Station Location : <%= lounge.stationLocation %></h1>
+       <h1> lounge Name : <%= lounge.loungeName %></h1>
+
+   <div class="shop_menu">
      
-   
-         <button id="search-btn" type="submit">Search</button>
-      </form>
-    </div>
+     <% for(var i=0;i< all_items.length; i++){ %>
+      
+      <% for(var j=0;j< all_items[i].length; j++){ %>
 
-    <% include ./slider.ejs %>
+        <div class="menu-items">
+          
+  
+              <img src="https://1.bp.blogspot.com/-KzKj1aBe7-k/XeeVsF5b-2I/AAAAAAAAEII/XOksle75D5IKvng5l7OMWaX9K_0hCQX7wCLcBGAsYHQ/s1600/shahi%2Bpaneerr.jpg" alt="Paneer">
+              <h2>  <%= all_items[i][j].item_Name %>  </h2>
+              <p> <%= all_items[i][j].description %> </p>
+              <p class="price"> <%= all_items[i][j].price %> </p>
+              <button class="add-to-cart">Buy Now</button>
+              
+          </div>
+
+              <% } %>
+              
+              <% } %>
+    
+   </div>
+  </div>
+
     <% include ./about.ejs %>
     <% include ./service.ejs %>
     <% include ./footer/footer.ejs %>
@@ -61,28 +74,6 @@
   </div>
    
 
- <div class="orderFood">
-
-
-
-
-<H1>order Food</H1>
-
-<form action="/choose_station_for_order_food" method="post">
-<span>choose stations</span>
-<select id="station" name="stationName">
-  <% for(var i=0;i< station.length; i++){ %>
-  <option value="<%= station[i] %>" name="<%= station[i] %>" ><%= station[i] %></option>
-  <% } %>
-</select>
-
-<button type="submit"> see awailable items </button>
-
-</form>
-
-
-
- </div>
 
 
  <script src="/javascripts/script.js"></script>

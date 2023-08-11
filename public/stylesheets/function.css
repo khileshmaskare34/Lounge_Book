@@ -16,13 +16,16 @@ body, html {
 }
 form{
   display: flex;
+  justify-content: space-between;
 }
 /* Style the form elements */
 label {
   display: block;
   margin-bottom: 5px;
 }
-
+input::placeholder{
+  font-size: 2vw;
+}
 input[type="time"],
 select {
   width: 100%;

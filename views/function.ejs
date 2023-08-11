@@ -7,24 +7,28 @@
   <title>Document</title>
 </head>
 <body>
+
+  
   <div class="functions">
    <form action="/choiceFilling" method="post">
+
     <label for="station">Choose Station:</label>
 
     <select id="station" name="stationName">
       <% for(var i=0;i< station.length; i++){ %>
-      <option value="<%= station[i] %>" name="<%= station[i] %>" ><%= station[i] %></option>
+        <option value="<%= station[i] %>" name="<%= station[i] %>" ><%= station[i] %></option>
       <% } %>
     </select>
 
     <label for="check-in-time">Check-in Time:</label>
-    <input type="time" id="check-in-time" step="1800">
+    <input type="datetime-local" id="check-in-time" name="checkIn">
 
     <label for="check-out-time"> Check-out Time:</label>
-    <input type="time" id="check-out-time" step="1800">
+    <input type="number" placeholder="hours" name="hours" id="check-out-time">
   
 
-      <button id="search-btn" type="submit">Search</button>
+    <button id="search-btn" type="submit">Search</button>
+
      </form>
      </div>
 </body>
