@@ -58,29 +58,6 @@ schedule.scheduleJob('1 */1 * * *', () => {
 
 
 
-// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< multer >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-var storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, './../public/upload'), function () {
-      if (err) {
-        throw err;
-      }
-    });
-  },
-  filename: (req, file, cb) => {
-    const name = Date.now() + '-' + file.originalname;
-    cb(null, name, (error, sucess) => {
-      if (error) {
-        throw error;
-      }
-    });
-  },
-});
-
-var upload = multer({ storage: storage });
-
-// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<multer>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
 
@@ -430,45 +407,60 @@ router.post('/shopRegistration', async(req, res)=>{
   })
 })
 
-let ff;
 
-router.post('/add_items', upload.single("image"), async (req,res,next)=>{
 
-try {
-  if((ff.mimetype).split('/').pop()=="png" || (ff.mimetype).split('/').pop()=="jpg" || (ff.mimetype).split('/').pop()=="jpeg" || (ff.mimetype).split('/').pop()=="mp4"){
 
-    data={
-        Image:ff.originalname
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< multer >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+// const path = require('path'); 
+
+var storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, './../public/upload'));
+  },
+  filename: (req, file, cb) => {
+    const name = Date.now() + '-' + file.originalname;
+    cb(null, name);
+  },
+});
+
+var upload = multer({ storage: storage });
+
+// ...
+
+router.post('/add_items', upload.single("item_image"), async (req, res, next) => {
+  try {
+
+    if (!req.file) {
+      return res.status(400).send('No file uploaded');
     }
 
-    arr.push(data)
-    await shop_items.insertMany([data])
-    // await collection.deleteMany({})
+    const imageFilename = req.file.filename;
+    // Now you can process the image filename as needed
 
+    var new_item = new shop_items({
+      item_Name: req.body.item_name,
+      description: req.body.description,
+      Image: imageFilename,
+      price: req.body.item_price,
+      shop_id: req.body.shopId
+    });
+
+    console.log("lucky"+ new_item);
+
+    new_item.save().then(function (dets) {
+      res.redirect("/shop_procider_admin");
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Internal Server Error'); // Sending an error response
   }
-  else{
-    res.send("inavlid file")
-  }
+});
 
-} catch (error) {
-  console.log(error);
-}
 
-var new_item = new shop_items({
-item_Name: req.body.item_name,
-description: req.body.description,
-Image : req.body.item_image,
-price: req.body.item_price,
-shop_id: req.body.shopId
 
-})
-new_item.save().then(function(dets){
-   
-   
-  res.redirect("/shop_procider_admin");
-})
 
-})
+
 
 // ==========================================User Logout==================================
 

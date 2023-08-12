@@ -56,14 +56,13 @@
         }
     }
 
-    
 </style>
 </head>
 <body>
     
     <div class="items">
 
-        <form action="/add_items" class="for_add_items" method="POST">
+        <form action="/add_items" class="for_add_items" method="POST" enctype="multipart/form-data">
             <h1> <%= newShop.shopName %></h1>
     <h2> Add items in your shop</h2>
     <div class="add_item">
@@ -79,7 +78,7 @@
         
     <div class="add_item">
     <span>Image :-</span>
-    <input type="text"   name="item_image" placeholder="add image or image url">
+    <input type="file"   name="item_image" placeholder="add image or image url">
     </div>
     <br>
     <div class="add_item">

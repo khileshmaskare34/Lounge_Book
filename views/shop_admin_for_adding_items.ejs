@@ -14,6 +14,8 @@
   <h1>Item Name :  <%= items[i].item_Name  %> </h1>
   <h1>Item price :  <%= items[i].price %> </h1>
   <h1>Item description :  <%= items[i].description %> </h1>
+  <img width="100" height="100" src="/upload/<%= items[i].Image %>" alt="">
+  
 
 
   <form action="/delete_item" method="post">
