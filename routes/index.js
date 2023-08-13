@@ -471,7 +471,7 @@ router.post('/edit_item',upload.single("Image"), async (req, res, next)=>{
     },
     { new: true}
   )
-     console.log('updated')
+    //  console.log('updated')
      res.redirect('/shop_procider_admin')
   })
  
@@ -490,8 +490,8 @@ router.post('/edit_item',upload.single("Image"), async (req, res, next)=>{
       },
       { new: true}
     )
-    console.log("edit"+edit_shop);
-       console.log('updated')
+    // console.log("edit"+edit_shop);
+      //  console.log('updated')
        res.redirect('/shop_procider_admin')
     })
    
@@ -517,27 +517,7 @@ router.post('/logout',(req,res,next)=>{
   
 })
 
-
-
-
-
 // _______________LoungeProvider Login and LoungeProvider Register_________________________
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//_________________________________________________Enquiry Page_________________________________________
 
 
 
@@ -583,7 +563,7 @@ let username = user.name;
 // console.log("lafda lag raha hai baba" + req.body.myDate);
 // console.log("lafda lag raha " + myDate1);
 let seat_1;
-console.log( typeof req.body.seat )
+// console.log( typeof req.body.seat )
 if(typeof req.body.seat !== 'object'){
   seat_1 = [req.body.seat]
 }else{
@@ -624,12 +604,12 @@ for(let i = 0;i<lounges_for_shop.length;i++){
 // >>>>>>>>>>>>>>>>>>lucky code>>>>>>>>>>>>>>>>
 let lounge = await loungeRegistration.findOne({ _id: req.cookies.longe_booked_by_user});
  
-console.log('as;ldkfjdkdfkdkfdfdsfdsfdsfs' + lounge)
+// console.log('as;ldkfjdkdfkdkfdfdsfdsfdsfs' + lounge)
 
 
 let shops1 = await shopRegistration.find({ station_Name: lounge.stationLocation });
-
-console.log(shops1)
+// console.log("khles"+shops1) 
+// console.log(shops1)
 
 
 var all_items =[];
@@ -637,12 +617,16 @@ var all_items =[];
 for(var i = 0; i < shops1.length; i++){
 
 var shop_item = await  shop_items.find({ shop_id: shops1[i].shopEmail }) 
-
+// console.log("youth"+shop_item)
  all_items.push(shop_item);
 }
+// console.log("ley"+ all_items)
 // >>>>>>>>>>>>>>>>>>lucky code>>>>>>>>>>>>>>>>
+
+let shop_name = await shopRegistration.find();
+// console.log("thunder"+shop_name);
  
-  res.render('after_loungeBook_loggedInIndex', {station,lounge, all_items});
+  res.render('after_loungeBook_loggedInIndex', {station,lounge, all_items, shops1});
 })
 
 
