@@ -1,13 +1,11 @@
 
 #services{
-  /* width: 100%; 
-   height: 100%; */
-  /* background-color: chocolate; */
+  /* height: 100vh; */
   background-color: #ddcbcbaf;
 }
 #services>h1{
   text-align: center;
-  padding: 2vw 1vw;
+  padding: 1vw 1vw;
   font-size: 3vw;
   /* background-color: #d53c3c; */
 }
@@ -27,11 +25,12 @@
   justify-content: center;
   align-items: center;
   width: 50vw;
-  height: 50vh;
+  height: 45vh;
 }
 .facilities>img{
   width: 40%;
-  height: 90%;
+  height: 70%;
+  margin-bottom: 10vh;
 }
 
 .service .facilities-p{
@@ -40,8 +39,8 @@
   align-items: center;
   flex-direction: column;
   width: 50vw;
-  height: 49vh;
-  padding: 1.3vw;
+  height: 45vh;
+  padding: 0.3vw;
 
 
 
@@ -51,9 +50,9 @@
  /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;  */
  /* font-style: italic;
   */
- font-size: 1.5vw;
+ font-size: 1.44vw;
  font-weight: 200;
- margin-bottom: 0.8vh;
+ /* margin-bottom: 0.2vh; */
  color: rgb(41, 45, 45);
  font-family: "Open Sans",sans-serif;
 
@@ -65,7 +64,7 @@
   background-color: #d53c3c;
   color: #ffffff;
   text-decoration: none;
-  margin-top: 1vw;
+  margin-top: 0.7vw;
   /* border-radius: 20px; */
   border-top-right-radius: 10px;
   
@@ -91,15 +90,18 @@
   .service .facilities{
     background-size: cover;
       width: 100vw;
-      height: 50vh;
+      height: 45vh;
   }
   .facilities>img{
       width: 85%;
-      height: 85%;
+      height: 90%;
+      
+        margin-bottom: 1vh;
+      
   }
   .service .facilities-p{
       width: 100vw;
-      height: 50vh;
+      height: 45vh;
   }
   .facilities-p>ul>li{
       font-size: 5vw;
