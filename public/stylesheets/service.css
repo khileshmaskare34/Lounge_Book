@@ -2,6 +2,8 @@
 #services{
   /* height: 100vh; */
   background-color: #ddcbcbaf;
+  background-color: #f6eeee65;
+
 }
 #services>h1{
   text-align: center;
@@ -61,7 +63,7 @@
 .btn{
   display: inline-block;
   padding: 1vh 2vw;
-  background-color: #d53c3c;
+  background-color: #d90403;
   color: #ffffff;
   text-decoration: none;
   margin-top: 0.7vw;
@@ -71,7 +73,8 @@
   border-bottom-left-radius: 10px;
 }
 .btn:hover{
-  background-color: rgb(37, 105, 59);
+  background-color: #068932;
+  scale: 1.1;
 }
 
 @media only screen and (max-width: 600px){

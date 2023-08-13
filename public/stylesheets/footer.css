@@ -75,7 +75,8 @@ footer {
 .footer-icon i {
     margin-right: 30px;
     font-size: 20px;
-    background-color: rgb(14, 109, 109);
+    /* background-color: rgb(14, 109, 109); */
+    background-color: #d90403;
     border-radius: 50%;
     padding: 5px;
 }
