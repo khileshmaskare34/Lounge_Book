@@ -48,6 +48,7 @@ body {
 .functions button {
   flex: 0 0 auto; 
   background-color: #007BFF;
+  background-color: #d90403;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -56,7 +57,7 @@ body {
 }
 
 .functions button:hover {
-  background-color: #0056b3;
+  background-color:  #c55f5f;
 }
 
 
