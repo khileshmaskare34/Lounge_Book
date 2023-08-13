@@ -11,7 +11,7 @@ const get_shop_provider_admin = async (req,res,next)=>{
   
   
    var shops = await shopRegistration.find({ shopProviderId : shopUser._id })
-   console.log("prem" +shops);
+  //  console.log("prem" +shops);
   //  var lounges = await loungeModelSchema.find({stationLocation: stationName})
   //  console.log("lalubhai" + lounges)
     res.render('shop_provider_home',{shopUser,shops })
