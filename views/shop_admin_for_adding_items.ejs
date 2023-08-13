@@ -24,12 +24,12 @@
 </form>
 
 
-<form action="/edit_item" method="post">
+<form action="/edit_item" method="post" enctype="multipart/form-data">
     <input type="text" name="itemId_for_delete" value="<%= items[i]._id %>" style="visibility: hidden;">
 
     <input type="text" name="item_Name" placeholder="<%= items[i].item_Name%>">
     <input type="text" name="description" placeholder="<%= items[i].description %>">
-    <input type="text" name="Image" placeholder="<%= items[i].Image %>">
+    <input type="file" name="Image" placeholder="<%= items[i].Image %>">
     <input type="text" name="price" placeholder="<%= items[i].price %>">
     <input type="text" name="shop_id" value="<%= items[i].shop_id %>" style="visibility: hidden; display: none;">
 

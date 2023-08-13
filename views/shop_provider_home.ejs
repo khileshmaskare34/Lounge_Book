@@ -18,11 +18,35 @@
 
             <% for(var i=0;i< shops.length; i++){ %>
             <ol>
-                <a href="/shopadminforaddingitems/<%= shops[i]._id %>"> <h1> <%= shops[i].shopName %></h1> </a>
+                <a href="/shopadminforaddingitems/<%= shops[i]._id %>"> <h1>Shop Name :  <%= shops[i].shopName %></h1> </a>
+                
+                <h3>station location: <%= shops[i].station_Name %></h3>
+                <div>
+                  <h1>Contact Information</h1>
+                  <h4>Shop contact Number: <%= shops[i].shopPhoneNo%></h4>
+                  <h4>Shop Email Id: <%= shops[i].shopEmail%></h4>
+                </div>
                 
                 <form action="/delete_shop" method="post">
                   <input type="text" value="<%= shops[i]._id %>" name="shopId_for_delete">
                   <button type="submit">delete this shop </button>
+                </form>
+
+                <form action="/edit_shop" method="post">
+                  
+                  <input type="text" id="name" name="shopName" placeholder="<%= shops[i].shopName %>" required>
+
+                  <input type="text" id="station" name="station" placeholder="<%= shops[i].station_Name %>">
+
+                  <input type="tel" id="phone" name="shopPhoneNo" placeholder="<%= shops[i].shopPhoneNo %>" >
+
+                  <input type="email" id="email" name="shopEmail" placeholder="<%= shops[i].shopEmail %>" required>
+
+
+              <input type="text" name="shopId_for_delete" value="<%= shops[i]._id %>" style="visibility: hidden;">
+
+                <button type="submit">edit shop</button>
+
                 </form>
 
             </ol>
