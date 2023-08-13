@@ -9,10 +9,10 @@ const users = require('./../../users');
 const add_lounges = async (req,res,next)=>{
 
     var perticuler_launge = await loungeRegistration.findOne({ _id: req.params.id})
-    console.log(perticuler_launge)
+    // console.log(perticuler_launge)
     
     var orders = await longeOrders.find({ loungeId : perticuler_launge._id})
-    console.log(orders)
+    // console.log(orders)
     
     var users1 = []
     

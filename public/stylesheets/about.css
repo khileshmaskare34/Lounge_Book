@@ -6,19 +6,26 @@
 }
 
 body{
-  height: 100vh;
+width: 100%;
+
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #f1f1f1;
 
+
 }
 
 .about-section{
-  background: url(https://erail.in/blog/Images/Post/railway-coach-class_10.jpg) no-repeat left;
+  /* background: url(https://erail.in/blog/Images/Post/railway-coach-class_10.jpg) no-repeat left; */
+  background: url('/images/WhatsApp Image 2023-07-17 at 14.41.10.jpg') no-repeat left;
   background-size: 50%;
+  
+height: 100vh;
   background-color: #fdfdfd;
+  /* background-color:#ddcbcbaf; */
   overflow: hidden;
+ 
 
   padding: 100px 0;
   
@@ -26,14 +33,22 @@ body{
 
 
 .inner-container{
-  width: 55%;
+  width: 50%;
   float: right;
-  background-color: #fdfdfd;
-  padding: 150px;
+  
+ 
+  background-color: #fdfdfdb9;
+  /* background-color:#ddcbcb74; */
+  /* background-color: #545454; */
+
+  padding: 180px;
+  
+  
 }
 
 .inner-container h1{
-  margin-bottom: 30px;
+  margin-top: -7vh;
+ 
   font-size: 30px;
   font-weight: 900;
 }
@@ -64,9 +79,12 @@ body{
   .about-section{
       background-size: 100%;
       padding: 100px 40px;
+      height: auto;
   }
   .inner-container{
       width: 100%;
+      margin-bottom: 30px;
+      margin-top: 0;
   }
 }
 
@@ -76,5 +94,7 @@ body{
   }
   .inner-container{
       padding: 60px;
+      margin-bottom: 30px;
+      margin-top: 0;
   }
 }

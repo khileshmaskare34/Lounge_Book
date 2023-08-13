@@ -13,7 +13,7 @@ const get_lounge_provider_login =   async function(req, res, next){
     
   
     const LoungeUser = await providerModel.findOne({email : email})
-    console.log(LoungeUser);
+    // console.log(LoungeUser);
     if (!LoungeUser || !(pass === LoungeUser.password)) {
       res.send("please enter thr right password and email");
     }

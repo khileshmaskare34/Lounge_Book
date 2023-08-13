@@ -56,8 +56,22 @@ schedule.scheduleJob('1 */1 * * *', () => {
 });
 
 
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< multer >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
+var storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, './../public/upload'));
+  },
+  filename: (req, file, cb) => {
+    const name = Date.now() + '-' + file.originalname;
+    cb(null, name);
+  },
+});
+
+var upload = multer({ storage: storage });
+
+// <<<<<<<<<<<<<<<<<<<multer>>>>>>>>>>>>>>>>>>>>>>
 
 
 
@@ -402,6 +416,7 @@ router.post('/shopRegistration', async(req, res)=>{
   var shopProvider = await shopProviderSchema.findOne({shopEmail:email})
   newShop.save().then(function(dets){
    
+    // console.log("lll" + shopProvider)
    
     res.render('add_items_of_shop',{shopProvider , newShop})
   })
@@ -410,23 +425,7 @@ router.post('/shopRegistration', async(req, res)=>{
 
 
 
-// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< multer >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-// const path = require('path'); 
-
-var storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, './../public/upload'));
-  },
-  filename: (req, file, cb) => {
-    const name = Date.now() + '-' + file.originalname;
-    cb(null, name);
-  },
-});
-
-var upload = multer({ storage: storage });
-
-// ...
 
 router.post('/add_items', upload.single("item_image"), async (req, res, next) => {
   try {
@@ -446,7 +445,6 @@ router.post('/add_items', upload.single("item_image"), async (req, res, next) =>
       shop_id: req.body.shopId
     });
 
-    console.log("lucky"+ new_item);
 
     new_item.save().then(function (dets) {
       res.redirect("/shop_procider_admin");
@@ -458,8 +456,45 @@ router.post('/add_items', upload.single("item_image"), async (req, res, next) =>
 });
 
 
+router.post('/edit_item',upload.single("Image"), async (req, res, next)=>{
+  const imageFilename = req.file.filename;
 
 
+  let edit_item =  await shopItems.findOneAndUpdate(
+    {_id: req.body.itemId_for_delete },
+    { $set: { item_Name: req.body.item_Name,
+              description : req.body.description,
+              Image: imageFilename,
+              price: req.body.item_price,
+              shop_id: req.body.shopId
+            }
+    },
+    { new: true}
+  )
+    //  console.log('updated')
+     res.redirect('/shop_procider_admin')
+  })
+ 
+
+  router.post('/edit_shop', async (req, res, next)=>{
+  
+  
+    let edit_shop =  await shopRegistration.findOneAndUpdate(
+      {_id: req.body.shopId_for_delete },
+      { $set: { shopName: req.body.shopName,
+                station_Name: req.body.station, 
+                shopPhoneNo: req.body.shopPhoneNo,
+                shopEmail : req.body.shopEmail,
+                 
+              }
+      },
+      { new: true}
+    )
+    // console.log("edit"+edit_shop);
+      //  console.log('updated')
+       res.redirect('/shop_procider_admin')
+    })
+   
 
 
 // ==========================================User Logout==================================
@@ -482,27 +517,7 @@ router.post('/logout',(req,res,next)=>{
   
 })
 
-
-
-
-
 // _______________LoungeProvider Login and LoungeProvider Register_________________________
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//_________________________________________________Enquiry Page_________________________________________
 
 
 
@@ -548,7 +563,7 @@ let username = user.name;
 // console.log("lafda lag raha hai baba" + req.body.myDate);
 // console.log("lafda lag raha " + myDate1);
 let seat_1;
-console.log( typeof req.body.seat )
+// console.log( typeof req.body.seat )
 if(typeof req.body.seat !== 'object'){
   seat_1 = [req.body.seat]
 }else{
@@ -589,12 +604,12 @@ for(let i = 0;i<lounges_for_shop.length;i++){
 // >>>>>>>>>>>>>>>>>>lucky code>>>>>>>>>>>>>>>>
 let lounge = await loungeRegistration.findOne({ _id: req.cookies.longe_booked_by_user});
  
-console.log('as;ldkfjdkdfkdkfdfdsfdsfdsfs' + lounge)
+// console.log('as;ldkfjdkdfkdkfdfdsfdsfdsfs' + lounge)
 
 
 let shops1 = await shopRegistration.find({ station_Name: lounge.stationLocation });
-
-console.log(shops1)
+// console.log("khles"+shops1) 
+// console.log(shops1)
 
 
 var all_items =[];
@@ -602,12 +617,16 @@ var all_items =[];
 for(var i = 0; i < shops1.length; i++){
 
 var shop_item = await  shop_items.find({ shop_id: shops1[i].shopEmail }) 
-
+// console.log("youth"+shop_item)
  all_items.push(shop_item);
 }
+// console.log("ley"+ all_items)
 // >>>>>>>>>>>>>>>>>>lucky code>>>>>>>>>>>>>>>>
+
+let shop_name = await shopRegistration.find();
+// console.log("thunder"+shop_name);
  
-  res.render('after_loungeBook_loggedInIndex', {station,lounge, all_items});
+  res.render('after_loungeBook_loggedInIndex', {station,lounge, all_items, shops1});
 })
 
 
@@ -653,7 +672,7 @@ var pathji = `/shopadminforaddingitems/` + shopForId._id
   await shopRegistration.findOneAndDelete({ _id: req.body.shopId_for_delete})
  
   
-   res.redirect('shop_procider_admin')
+   res.redirect('/shop_procider_admin')
  })
  
 
@@ -661,7 +680,7 @@ var pathji = `/shopadminforaddingitems/` + shopForId._id
 
 router.post('/edit_lounge', async (req, res, next)=>{
 
- await loungeRegistration.findOneAndUpdate(
+ let edit_lounge = await loungeRegistration.findOneAndUpdate(
     { _id: req.body.loungeId_for_delete }, // Conditions to find the document
     { $set: { loungeName: req.body.loungeName,
               loungePhoneNo : req.body.loungePhoneNo,
@@ -671,6 +690,7 @@ router.post('/edit_lounge', async (req, res, next)=>{
     }}, // Update operation
     { new: true } // Return the updated document
   );
+  console.log("edit_Loun"+ edit_lounge)
  
    console.log('updated')
    res.redirect('/lounge_provider_admin')
