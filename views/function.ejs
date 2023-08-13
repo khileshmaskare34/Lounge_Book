@@ -12,7 +12,7 @@
   <div class="functions">
    <form action="/choiceFilling" method="post">
 
-    <label for="station">Choose Station:</label>
+    <label class="lable-function" for="station">Choose Station:</label>
 
     <select id="station" name="stationName">
       <% for(var i=0;i< station.length; i++){ %>
@@ -20,10 +20,10 @@
       <% } %>
     </select>
 
-    <label for="check-in-time">Check-in Time:</label>
+    <label for="check-in-time" class="lable-function" >Check-in Time:</label>
     <input type="datetime-local" id="check-in-time" name="checkIn">
 
-    <label for="check-out-time"> Check-out Time:</label>
+    <label for="check-out-time" class="lable-function" > Check-out Time:</label>
     <input type="number" placeholder="hours" name="hours" id="check-out-time">
   
 

@@ -1,89 +1,82 @@
-/* Reset some default styles for better consistency */
-body, html {
+body {
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
 }
 
-/* Apply styles to the .functions container */
 .functions {
-  max-width: 100vw;
-  margin: 0 ;
-  padding: 20px;
-  border: 0px solid #b58989;
-  background-color: #1c2331;
-  color: #fff;
-}
-form{
   display: flex;
-  justify-content: space-between;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  z-index: 1;
+  max-height: 200px;
+  color: #fff;
+  background-color: rgb(28, 35, 49);
+  /* border-radius: 10px; */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  box-sizing: border-box;
 }
-/* Style the form elements */
-label {
-  display: block;
+
+.functions form {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.functions label {
+   flex: 1 1 10%;
   margin-bottom: 5px;
-}
-input::placeholder{
-  font-size: 2vw;
-}
-input[type="time"],
-select {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
+  display: flex;
+  padding: 0 1vw;
+  font-weight: 400;
+  font-size: 1.2vw;
 }
 
-/* Style the button */
-#search-btn {
-  display: block;
-  width: 100%;
+.functions select,
+.functions input {
+  flex: 1 1 10%; 
   padding: 10px;
-  background-color: #007bff;
-  background-color: #4caf50;
+  margin-bottom: 10px;
+  margin-right: 2vw;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
 
+.functions button {
+  flex: 0 0 auto; 
+  background-color: #007BFF;
   color: #fff;
+  padding: 10px 20px;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-}
-#search-btn a{
-  color: #fff;
-  text-decoration: none;
-  font-size: 20px;
 }
 
-/* Flex layout for laptops and larger devices */
-@media (min-width: 1024px) {
+.functions button:hover {
+  background-color: #0056b3;
+}
+
+
+
+
+@media (max-width: 992px) {
   .functions {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    max-height: 600px;
+    min-height: initial;
   }
-
-  label,
-  input[type="time"],
-  select {
+  .functions label {
+    flex: 1 1 100%; 
+  }
+  .functions button {
     flex: 0 0 auto;
-    width: auto;
-    margin-right: 2%;
   }
-
-  #search-btn {
-    /* flex: 0 0 30%; */
-    width: 15%;
-    /* margin: 0.2vw; */
-  }
+  .functions select,
+.functions input {
+   flex: 1 1 100%; 
 }
 
-/* Responsive styles for smaller devices */
-@media (max-width: 480px) {
-  .functions {
-    padding: 10px;
-  }
 
-  input[type="time"],
-  select {
-    font-size: 14px;
-  }
-}
+} 
