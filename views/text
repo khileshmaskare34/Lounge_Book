@@ -64,3 +64,53 @@
 
 </body>
 </html>
+
+
+
+
+
+
+<!-- date - 14/8/2023 -->
+
+<% for(var i=0;i< launge.noOfSeats; i++){%>
+  <tr>
+    <form action="/choosen/<%= launge._id %>" method="post">
+      <% for(var i=0;i< launge.noOfSeats; i++){ %>
+         <% if(i%10==0){ %>
+            <br>
+         <% } %>
+
+          <label for="myCheckbox" id="A<%= i+1 %>"> <%=i+1%></label>
+
+          <input type="checkbox" style ="border: 4px solid blue; " class="seats" id="A<%= i+1 %>"  name="seat" value="A<%= i+1 %>">
+
+
+
+          <script>
+
+            var individual ="A<%= i+1 %>";
+            var arrrrrr = []
+            var arr =`<%= totalSeats %>`;
+            arrrrrr.push(arr)
+            // }
+            var array = arrrrrr[0].split(',')
+            
+            console.log(array)
+            console.log(arrrrrr.indexOf(individual))
+            
+              var kuch = document.querySelector('#A<%= i+1 %>')
+              var luck = document.querySelector('#A<%= i+1 %>')
+            if (array.indexOf(individual) == -1){
+            
+            }else{
+            kuch.style.backgroundColor = 'red';
+            luck.style.backgroundColor = 'red';
+            }
+              arr='';
+          </script>
+      <% } %>
+  </tr>
+     <br/><button type="submit">Confirm Selection</button>
+
+    </form>
+<%  } %>

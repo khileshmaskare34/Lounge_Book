@@ -35,9 +35,10 @@
   
 
 
-   <% include ./function.ejs %>
+   <% include ./function.ejs %> 
     
   <div class="shop_menu_section">
+    <form action="/foodSelection">
        <h1>khilesdf n</h1>
        <h1> Station Location : <%= lounge.stationLocation %></h1>
        <h1> lounge Name : <%= lounge.loungeName %></h1>
@@ -65,6 +66,7 @@
               <% } %>
     
    </div>
+  </form>
   </div>
 
     <% include ./about.ejs %>

@@ -33,6 +33,7 @@ const get_choose_lounge =    async (req,res,next)=>{
     // console.log(totalSeats )
     
     let email = req.cookies.user_email;
+    // console.log("email"+email)
     let userx = await users.findOne({email : email});
     // console.log("this is lucky"+ userx);
     
