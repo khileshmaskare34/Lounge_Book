@@ -3,95 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lounge Management</title>
+    <title>Prem's Plaza</title>
+    <link rel="stylesheet" href="/stylesheets/shop_provider_home.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f5f5f5;
         }
 
-        #main {
-            text-align: center;
-            padding: 30px;
+        .shop-provider-home {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 1200px;
         }
 
-        h1 {
-            font-size: 28px;
+        .welcome-heading {
             color: #333;
-            margin-bottom: 20px;
+            margin-top: 0;
         }
 
-        /* Lounge Card Styling */
-        .lounge-card {
+        .container {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 20px;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .left,
+        .right {
+            flex: 1;
             padding: 20px;
-            background-color: #ffffff;
-            border: 2px solid #ddd;
+            background-color: #f9f9f9;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-            max-width: 300px;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-        }
-
-        #main {
-            text-align: center;
-            padding: 30px;
-        }
-
-        h1 {
-            font-size: 28px;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        /* Lounge Card Styling */
-        .lounge-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 20px;
-            padding: 20px;
-            background-color: #ffffff;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-            max-width: 300px;
-        }
-
-        .lounge-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .lounge-card h1 {
-            font-size: 20px;
-            color: #333;
-            margin: 10px 0;
-        }
-
-        /* Lounge Form Styling */
-        #registration-form {
-            text-align: center;
-            padding: 20px;
-            background-color: #ffffff;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         .form-group {
@@ -101,108 +49,59 @@
         label {
             display: block;
             font-weight: bold;
-            margin-bottom: 5px;
-            color: #333;
+            margin-bottom: 10px;
+            color: #555;
         }
 
-        input {
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"] {
             width: 100%;
             padding: 10px;
-            border: 1px solid #ddd;
+            border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: 14px;
+            background-color: #f5f5f5;
+            color: #333;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus {
+            border-color: #66afe9;
         }
 
         button {
-            background-color: #3498db;
+            padding: 12px 25px;
+            background-color: #007bff;
             color: #fff;
             border: none;
-            padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s ease;
         }
 
         button:hover {
-            background-color: #2980b9;
+            background-color: #0056b3;
         }
 
-        .lounge-card:hover {
-            transform: translateY(-5px);
-        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
 
-        .lounge-card h1 {
-            font-size: 20px;
-            color: #333;
-            margin: 10px 0;
-        }
-
-        /* Add New Lounge Form Styling */
-        #add-lounge-form {
-            display: none;
+            .left,
+            .right {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-    <div id="main">
-        <h1>Welcome, <%= LoungeUser.name %></h1>
-        <h2>Your Registered Lounges</h2>
-        <% for (var i = 0; i < his_launges.length; i++) { %>
-        <div class="lounge-card">
-            <h1><a href="/laungeadminforaddingitems/<%= his_launges[i]._id %>"><%= his_launges[i].loungeName %></a></h1>
-            <p>Owner: <%= LoungeUser.name %></p>
-            <p>No. of Seats: <%= his_launges[i].noOfSeats %></p>
-            <form action="/delete_lounge" method="POST">
-                <input type="text" name="loungeId_for_delete" value="<%= his_launges[i]._id %>" style="visibility: hidden; display: none; ">
-                <button type="submit">Delete Lounge</button>
-            </form>
-            <form action="/edit_lounge" method="POST">
-                <input type="text" name="loungeId_for_delete" value="<%= his_launges[i]._id %>" style="visibility: hidden; display: none; ">
-                <input type="text" name="loungeName" placeholder="<%= his_launges[i].loungeName %>" >
-                <input type="text" name="loungePhoneNo" placeholder="<%= his_launges[i].loungePhoneNo%>" >
-                <input type="text" name="loungeEmail" placeholder="<%= his_launges[i].loungeEmail %>" >
-                <input type="text" name="noOfSeats" placeholder="<%= his_launges[i].noOfSeats%>" >
-                <button type="submit">Edit Lounge Information</button>
-            </form>
-        </div>
-        <% } %>
-        
-        <h2>Add New Lounge</h2>
-        <button id="toggle-add-form">Add New Lounge</button>
-        <form id="add-lounge-form" action="/loungeRegistration" method="post">
-            <div class="form-group">
-                <label for="name">Lounge Name</label>
-                <input type="text" id="name" name="loungeName" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Lounge Email</label>
-                <input type="email" id="email" name="loungeEmail" required>
-            </div>
-            <div class="form-group">
-                <label for="phone">Lounge Phone Number</label>
-                <input type="tel" id="phone" name="loungePhoneNo">
-            </div>
-            <div class="form-group">
-                <label for="seats">Lounge No. of Seats</label>
-                <input type="text" id="seats" name="noOfSeats">
-            </div>
-            <div class="form-group">
-                <label for="station">Station Name</label>
-                <input type="text" id="station" name="stationLocation">
-            </div>
-            <input type="text" name="loungeProviderId" value="<%= loungeProvider._id%>" style="visibility: hidden;">
-            <button type="submit">Register</button>
-        </form>
+    <!-- Your existing HTML code here -->
+    <div class="shop-provider-home">
+        <!-- ... -->
     </div>
-    
-    <script>
-        const toggleAddFormButton = document.getElementById('toggle-add-form');
-        const addLoungeForm = document.getElementById('add-lounge-form');
-
-        toggleAddFormButton.addEventListener('click', () => {
-            addLoungeForm.style.display = addLoungeForm.style.display === 'none' ? 'block' : 'none';
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

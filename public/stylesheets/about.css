@@ -31,6 +31,11 @@ height: 100vh;
   
 }
 
+#about> h1{
+  margin-left: 1000px;
+  font-size: 50px;
+  
+    }
 
 .inner-container{
   width: 50%;
@@ -54,7 +59,7 @@ height: 100vh;
 }
 
 .text{
-  font-size: 17px;
+  font-size: 21px;
   color: #545454;
   line-height: 30px;
   text-align: justify;
@@ -66,7 +71,7 @@ height: 100vh;
   display: flex;
   justify-content: space-between;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 11px;
 }
 
 @media screen and (max-width:1200px){
@@ -92,6 +97,8 @@ height: 100vh;
   .about-section{
       padding: 0;
   }
+
+  
   .inner-container{
       padding: 60px;
       margin-bottom: 30px;

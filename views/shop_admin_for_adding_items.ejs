@@ -193,7 +193,7 @@
         
         <div class="item-actions">
             <button class="action-button" onclick="toggleEditForm('<%= items[i]._id %>')">Edit Item</button>
-        </div>
+        </div>  
 
         <form action="/delete_item" method="post">
             <input type="text" name="itemId_for_delete" value="<%= items[i]._id %>" style="visibility: hidden; display: none;">
