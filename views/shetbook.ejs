@@ -10,9 +10,13 @@
 <body>
 
 
-      loungeName: <strong>[<%= launge.loungeName %>]</strong>
-      Name *: <input type="text" id="Username" required>
-      Number of Seats *: <input type="number" id="Numseats" required>
+  <div class="upperform">
+    loungeName: <strong>[<%= launge.loungeName %>]</strong>
+    Name : <input type="text" id="Username" required>
+    Number of Seats : <input type="number" id="Numseats" required>
+  </div>
+       
+    
           
         
         <div class="seatStructure">
@@ -76,24 +80,7 @@
         </center>
         </div>
               
-        <br/><br/>
-        
-        <div class="displayerBoxes">
-        <center>
-          <table class="Displaytable">
-          <tr>
-            <th>Name</th>
-            <th>Number of Seats</th>
-            <th>Seats</th>
-          </tr>
-          <tr>
-            <td><textarea placeholder="<%= userx.name%>" id="nameDisplay"><%= userx.name %>
-            </textarea></td>
-            <td><textarea id="NumberDisplay"></textarea></td>
-            <td><textarea id="seatsDisplay"></textarea></td>
-          </tr>
-        </table>
-        </center>
+        <
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
