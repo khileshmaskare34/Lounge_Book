@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>heooo
+
+    </h1>
+
+
+         
+    <% for(var i=0;i< all_items.length; i++){ %>
+      
+        <% for(var j=0;j< all_items[i].length; j++){ %>
+  
+          <div class="menu-items">
+            
+    
+                <img src="https://1.bp.blogspot.com/-KzKj1aBe7-k/XeeVsF5b-2I/AAAAAAAAEII/XOksle75D5IKvng5l7OMWaX9K_0hCQX7wCLcBGAsYHQ/s1600/shahi%2Bpaneerr.jpg" alt="Paneer">
+                <h2>  <%= all_items[i][j].item_Name %>  </h2>
+                <p> <%= all_items[i][j].description %> </p>
+                <p class="price"> <%= all_items[i][j].price %> </p>
+                <button class="add-to-cart">Buy Now</button>
+                
+            </div>
+  
+         <% } %>
+                
+    <% } %>
+</body>
+</html>

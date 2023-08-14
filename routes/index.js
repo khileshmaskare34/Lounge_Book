@@ -697,6 +697,23 @@ router.post('/edit_lounge', async (req, res, next)=>{
  })
 
 
+router.get('/foodSelection', async function(req, res){
+  let lounge = await loungeRegistration.findOne({ _id: req.cookies.longe_booked_by_user});
 
+  let shops1 = await shopRegistration.find({ station_Name: lounge.stationLocation });
+// console.log("khles"+shops1) 
+// console.log(shops1)
+
+
+var all_items =[];
+
+for(var i = 0; i < shops1.length; i++){
+
+var shop_item = await  shop_items.find({ shop_id: shops1[i].shopEmail }) 
+// console.log("youth"+shop_item)
+ all_items.push(shop_item);
+}
+  res.render('foodSelection', {all_items});
+})
 
 module.exports = router;
