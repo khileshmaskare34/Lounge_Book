@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,14 +22,14 @@
 </body>
 </html>
 
-</html>
+</html> -->
 
 
 
 
 
 
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -42,25 +42,24 @@
     <div id="main">
         <h1>Registered Lounges in Station</h1>
         <ul class="lounge-list">
+     <% for(var i = 0; i < launges.length; i++){ %>
+
             <li class="lounge-item">
                
                 <div class="lounge-details">
+                   <a href="/chooseLaunge/<%= launges[i]._id %>"><%= launges[i].loungeName %></a>
+
                     <h2>Lounge Name 1</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     <a href="#">Book Now</a>
                 </div>
             </li>
-            <li class="lounge-item">
-              
-                <div class="lounge-details">
-                    <h2>Lounge Name 2</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <a href="#">Book now</a>
-                </div>
-            </li>
+    <% } %>
+
+            
             Add more lounge items here
         </ul>
     </div>
     
 </body>
-</html>  -->
+</html> 
