@@ -184,8 +184,30 @@ let items = await shop_items.find({ shop_id: perticuler_shop.shopEmail })
 
 
 
+router.get('/item/:id', async (req,res,next)=>{
+
+  var item = await shopItems.findOne({ _id: req.params.id})
+  // console.log(item)
+  var shop_name = await shopRegistration.findOne({ });
+  console.log("lucky"+shop_name);
+
+  res.render('foodSelection', {item, shop_name})
+})
 
 
+
+router.post('/foodOrder', async function(req, res){
+  console.log(req.params)
+
+  
+  const username = await users.findOne({email: req.cookies.user_email})
+  const shopname = await shopProviderSchema.findOne({email: req.cookies.shopProvider_email})
+  const quantity = req.body.quantity;
+  console.log(quantity);
+  console.log(username.name);
+  console.log(shopname.shopName)
+
+})
 
 
 //888************************************* ALL POST ROUTES ******************************
@@ -343,11 +365,8 @@ router.post('/shopProviderRegister', function(req, res, next) {
   newShopProvider.save().then((doc)=>{
     // res.cookie('Token', token, { httpOnly: true, maxAge: 1.728e8 });
     res.cookie('shopProvider_email', req.body.shopEmail);
-    // console.log(newShopProvider);
-//  var provider =    providerModel.findOne({email: newProvider.email})
-    // console.log()
-    // res.render('shopRegistration');
-    res.redirect('/shopRegistration')
+    
+    res.redirect('/shop_procider_admin')
   })
 });
 
@@ -531,10 +550,7 @@ router.post('/choiceFilling', async (req,res,next)=>{
   let checkin1 = req.body.checkIn
   let dateF = moment(checkin1).format('YYYY-MM-DDTHH:mm:ss.SSSZ')
 let UTC_futureDate = moment(dateF).utc().add(hours, 'hours')
-  // console.log('jijij' + checkin1)
-  // console.log("lucky check in " + checkin);
-  // console.log("lucky hours"+ hours)
-  // const futureTime = new Date(checkin1.getTime() + hours * 60 * 60 * 1000);
+
   myDate = UTC_futureDate ;
   // console.log("le beta isko bhi check kar"+ futureTime)
 
@@ -590,45 +606,45 @@ newOrder.save().then(function(dets){
 
 router.get('/after_loungeBook_loggedInIndex', async function(req, res){
  
-// let all_food_items =[]
-
-// for(var k = 0 ; k<shops.length; k++){
+  // let all_food_items =[]
   
-// }
-var lounges_for_shop = await loungeRegistration.find();
-let station = [];
-for(let i = 0;i<lounges_for_shop.length;i++){
-  let station1 = lounges_for_shop[i].stationLocation
-  station.push(station1)
-}
-// >>>>>>>>>>>>>>>>>>lucky code>>>>>>>>>>>>>>>>
-let lounge = await loungeRegistration.findOne({ _id: req.cookies.longe_booked_by_user});
- 
-// console.log('as;ldkfjdkdfkdkfdfdsfdsfdsfs' + lounge)
+  // for(var k = 0 ; k<shops.length; k++){
+    
+  // }
+  var lounges_for_shop = await loungeRegistration.find();
+  let station = [];
+  for(let i = 0;i<lounges_for_shop.length;i++){
+    let station1 = lounges_for_shop[i].stationLocation
+    station.push(station1)
+  }
 
-
-let shops1 = await shopRegistration.find({ station_Name: lounge.stationLocation });
-// console.log("khles"+shops1) 
-// console.log(shops1)
-
-
-var all_items =[];
-
-for(var i = 0; i < shops1.length; i++){
-
-var shop_item = await  shop_items.find({ shop_id: shops1[i].shopEmail }) 
-// console.log("youth"+shop_item)
- all_items.push(shop_item);
-}
-// console.log("ley"+ all_items)
-// >>>>>>>>>>>>>>>>>>lucky code>>>>>>>>>>>>>>>>
-
-let shop_name = await shopRegistration.find();
-// console.log("thunder"+shop_name);
- 
-  res.render('after_loungeBook_loggedInIndex', {station,lounge, all_items, shops1});
-})
-
+  // >>>>>>>>>>>>>>>>>>lucky code>>>>>>>>>>>>>>>>
+  let lounge = await loungeRegistration.findOne({ _id: req.cookies.longe_booked_by_user});
+   
+  // console.log('as;ldkfjdkdfkdkfdfdsfdsfdsfs' + lounge)
+  
+  
+  let shops1 = await shopRegistration.find({ station_Name: lounge.stationLocation });
+  // console.log("khles"+shops1) 
+  // console.log(shops1)
+  
+  
+  var all_items =[];
+  
+  for(var i = 0; i < shops1.length; i++){
+  
+  var shop_item = await  shop_items.find({ shop_id: shops1[i].shopEmail }) 
+  // console.log("youth"+shop_item)
+   all_items.push(shop_item);
+  }
+  // console.log("ley"+ all_items)
+  // >>>>>>>>>>>>>>>>>>lucky code>>>>>>>>>>>>>>>>
+  
+  let shop_name = await shopRegistration.find();
+  // console.log("thunder"+shop_name);
+   
+    res.render('after_loungeBook_loggedInIndex', {station,lounge, all_items, shops1});
+  })
 
 
 

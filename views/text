@@ -114,3 +114,56 @@
 
     </form>
 <%  } %>
+
+
+
+
+
+
+
+
+
+<!-- lounge after get -->
+
+
+router.get('/after_loungeBook_loggedInIndex', async function(req, res){
+ 
+  // let all_food_items =[]
+  
+  // for(var k = 0 ; k<shops.length; k++){
+    
+  // }
+  var lounges_for_shop = await loungeRegistration.find();
+  let station = [];
+  for(let i = 0;i<lounges_for_shop.length;i++){
+    let station1 = lounges_for_shop[i].stationLocation
+    station.push(station1)
+  }
+  // >>>>>>>>>>>>>>>>>>lucky code>>>>>>>>>>>>>>>>
+  let lounge = await loungeRegistration.findOne({ _id: req.cookies.longe_booked_by_user});
+   
+  console.log('as;ldkfjdkdfkdkfdfdsfdsfdsfs' + lounge)
+  
+  
+  let shops1 = await shopRegistration.find({ station_Name: lounge.stationLocation });
+  console.log("khles"+shops1) 
+  // console.log(shops1)
+  
+  
+  var all_items =[];
+  
+  for(var i = 0; i < shops1.length; i++){
+  
+  var shop_item = await  shop_items.find({ shop_id: shops1[i].shopEmail }) 
+  console.log("youth"+shop_item)
+   all_items.push(shop_item);
+  }
+  console.log("ley"+ all_items)
+  // >>>>>>>>>>>>>>>>>>lucky code>>>>>>>>>>>>>>>>
+  
+  let shop_name = await shopRegistration.find();
+  // console.log("thunder"+shop_name);
+   
+    res.render('after_loungeBook_loggedInIndex', {station,lounge, all_items, shops1});
+  })
+  

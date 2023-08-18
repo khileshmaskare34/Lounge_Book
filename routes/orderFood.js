@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 mongoose.set('strictQuery',true);
-var foodItemSchema = mongoose.Schema({
-    foodName : {
+var orderFoodSchema = mongoose.Schema({
+    item_Name : {
         type : String,
         required : true
     },
-    description : {
+    item_id : {
         type : String
     },
     price :{
@@ -15,7 +15,10 @@ var foodItemSchema = mongoose.Schema({
     shop_id:{
         type: String,
         required: true
+    },
+     user_id:{
+        type: String
     }
 })
 
-module.exports = mongoose.model("foodItemSchema", foodItemSchema);
+module.exports = mongoose.model("orderFood", orderFoodSchema);

@@ -1,11 +1,14 @@
 // var express = require('express');
 const users = require('./../../users');
+const loungeOrders = require('./../../../module/LoungeOrders');
 
 
 const get_user_account =  async  function(req, res, next){
     let email = req.cookies.user_email;
     let user = await users.findOne({email:email});
-    res.render('userAccountPage', {user})
+    let orders = await loungeOrders.find({userId: user._id})
+    console.log("skfn bhb" + orders);
+    res.render('userAccountPage', {user, orders})
   }
 
   module.exports = {

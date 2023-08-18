@@ -23,6 +23,10 @@
             margin-bottom: 20px;
         }
 
+        .lounge-box{
+            display: flex;
+            flex-wrap: wrap;
+        }
         /* Lounge Card Styling */
         .lounge-card {
             display: flex;
@@ -127,6 +131,7 @@
     <div id="main">
         <h1>Welcome, <%= LoungeUser.name %></h1>
         <h2>Your Registered Lounges</h2>
+    <div class="lounge-box">
         <% for (var i = 0; i < his_launges.length; i++) { %>
         <div class="lounge-card">
             <h1><a href="/laungeadminforaddingitems/<%= his_launges[i]._id %>"><%= his_launges[i].loungeName %></a></h1>
@@ -146,7 +151,7 @@
             </form>
         </div>
         <% } %>
-        
+    </div>
         <h2>Add New Lounge</h2>
         <button id="toggle-add-form">Add New Lounge</button>
         <form id="add-lounge-form" action="/loungeRegistration" method="post">
