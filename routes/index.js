@@ -185,7 +185,7 @@ let items = await shop_items.find({ shop_id: perticuler_shop.shopEmail })
 
 
 router.get('/item/:id', async (req,res,next)=>{
-
+ console.log("skjf fg")
   var item = await shopItems.findOne({ _id: req.params.id})
   console.log("item"+ item)
   var shop_name = await shopRegistration.findOne({ });
@@ -194,19 +194,46 @@ router.get('/item/:id', async (req,res,next)=>{
   res.render('foodSelection', {item, shop_name})
 })
 
-
+const orderItem  = require('./orderFood');
+const { Schema } = require('mongoose');
 
 router.post('/foodOrder', async function(req, res){
-  console.log(req.params)
+
+  const itemid = req.body.itemid;
+   const item = await shopItems.findOne({_id: itemid})
+
+  const user = await users.findOne({email: req.cookies.user_email})
+  const quantitys = req.body.quantity;
+  const shop = await shopRegistration.findOne({shopEmail: item.shop_id})
 
 
-  const username = await users.findOne({email: req.cookies.user_email})
-  const shopname = await shopProviderSchema.findOne({email: req.cookies.shopProvider_email})
-  const quantity = req.body.quantity;
-  console.log(quantity);
-  console.log(username.name);
-  console.log(shopname.shopName)
+// item Name
+  var itemName = item.item_Name
+// item id
+  var itemId = item._id
+// price
+  var itemPrice = item.price
+// shop id
+  var shopId = shop._id
+// user id
+  var userId = user._id
 
+   var order_item = new orderItem({
+    item_Name: itemName,
+    item_id: itemId,
+    price: itemPrice,
+    shop_id: shopId,
+    user_id: userId,
+    quantity: quantitys,
+
+   })
+   try {
+    order_item.save().then(function(){
+      res.send("product saved in database");
+    })
+   } catch (error) {
+    console.log(error);
+   }
 })
 
 

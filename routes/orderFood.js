@@ -18,6 +18,9 @@ var orderFoodSchema = mongoose.Schema({
     },
      user_id:{
         type: String
+    },
+    quantity:{
+        type:Number
     }
 })
 
