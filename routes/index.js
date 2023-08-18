@@ -187,7 +187,7 @@ let items = await shop_items.find({ shop_id: perticuler_shop.shopEmail })
 router.get('/item/:id', async (req,res,next)=>{
 
   var item = await shopItems.findOne({ _id: req.params.id})
-  // console.log(item)
+  console.log("item"+ item)
   var shop_name = await shopRegistration.findOne({ });
   console.log("lucky"+shop_name);
 
@@ -199,7 +199,7 @@ router.get('/item/:id', async (req,res,next)=>{
 router.post('/foodOrder', async function(req, res){
   console.log(req.params)
 
-  
+
   const username = await users.findOne({email: req.cookies.user_email})
   const shopname = await shopProviderSchema.findOne({email: req.cookies.shopProvider_email})
   const quantity = req.body.quantity;
