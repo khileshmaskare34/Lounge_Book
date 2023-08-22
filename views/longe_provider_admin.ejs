@@ -33,6 +33,7 @@
             flex-direction: column;
             align-items: center;
             margin: 20px;
+            height: 450px;
             padding: 20px;
             background-color: #ffffff;
             border: 2px solid #ddd;
@@ -78,12 +79,15 @@
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 17px;
+            width: 40vw;
+           margin-left: 27%;
         }
 
         label {
             display: block;
             font-weight: bold;
+            margin-top: 5%;
             margin-bottom: 5px;
             color: #333;
         }
@@ -111,6 +115,10 @@
             background-color: #2980b9;
         }
 
+     
+  #ff{
+    margin-top:13%;
+  }
         .lounge-card:hover {
             transform: translateY(-5px);
         }
@@ -120,6 +128,9 @@
             color: #333;
             margin: 10px 0;
         }
+    #gg{
+        margin-top: 12%;
+    }
 
         /* Add New Lounge Form Styling */
         #add-lounge-form {
@@ -139,15 +150,15 @@
             <p>No. of Seats: <%= his_launges[i].noOfSeats %></p>
             <form action="/delete_lounge" method="POST">
                 <input type="text" name="loungeId_for_delete" value="<%= his_launges[i]._id %>" style="visibility: hidden; display: none; ">
-                <button type="submit">Delete Lounge</button>
+                <button   id="dd"   type="submit">Delete Lounge</button>
             </form>
-            <form action="/edit_lounge" method="POST">
+            <form id="gg" action="/edit_lounge" method="POST">
                 <input type="text" name="loungeId_for_delete" value="<%= his_launges[i]._id %>" style="visibility: hidden; display: none; ">
                 <input type="text" name="loungeName" placeholder="<%= his_launges[i].loungeName %>" >
                 <input type="text" name="loungePhoneNo" placeholder="<%= his_launges[i].loungePhoneNo%>" >
                 <input type="text" name="loungeEmail" placeholder="<%= his_launges[i].loungeEmail %>" >
                 <input type="text" name="noOfSeats" placeholder="<%= his_launges[i].noOfSeats%>" >
-                <button type="submit">Edit Lounge Information</button>
+                <button id="ff" type="submit">Edit Lounge Information</button>
             </form>
         </div>
         <% } %>

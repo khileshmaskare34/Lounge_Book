@@ -29,7 +29,7 @@ const shop_provider_login = async (req, res, next) => {
             res.cookie('Token', token, { httpOnly: true, maxAge: 1.728e8 });
             res.cookie('shopProvider_email', shopUser.shopEmail, { httpOnly: true, maxAge: 1.728e8 });
 
-            res.redirect("/shop_provider_admin");
+            res.redirect("/shop_procider_admin");
         }
     } catch (error) {
         console.error("An error occurred:", error);
