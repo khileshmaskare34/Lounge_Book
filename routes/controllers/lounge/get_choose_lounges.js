@@ -1,6 +1,6 @@
-const loungeRegistration = require("./../../loungeModelSchema");
+const loungeRegistration = require("../../../module/loungeModelSchema");
 const longeOrders = require('./../../../module/LoungeOrders')
-const users = require('./../../users');
+const users = require('../../../module/users');
 
 
 

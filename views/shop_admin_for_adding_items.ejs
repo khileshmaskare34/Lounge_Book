@@ -200,7 +200,7 @@
         <button type="submit" id="ll"> Delete Item shop </button>
         </form>
         <!-- Edit Form for each item -->
-        <form id="edit-form-<%= items[i]._id %>" class="edit-form" action="/edit_item" method="post">
+        <form id="edit-form-<%= items[i]._id %>" class="edit-form" action="/edit_item" method="post" enctype="multipart/form-data">
             <input type="hidden" name="itemId_for_delete" value="<%= items[i]._id %>">
             <input type="text" name="item_Name" placeholder="<%= items[i].item_Name %>">
             <input type="text" name="description" placeholder="<%= items[i].description %>">

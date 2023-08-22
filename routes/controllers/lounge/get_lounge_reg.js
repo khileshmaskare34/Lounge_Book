@@ -1,6 +1,6 @@
 
-const providerModel = require("./../../loungeProviderSchema")
-const loungeRegistration = require("./../../loungeModelSchema");
+const providerModel = require("../../../module/loungeProviderSchema")
+const loungeRegistration = require("../../../module/loungeModelSchema");
 
 
 const get_lounge_reg = async(req, res)=>{

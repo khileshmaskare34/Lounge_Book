@@ -1,8 +1,8 @@
 
-const shopRegistration= require('./../../shopModelSchema');
+const shopRegistration= require('../../../module/shopModelSchema');
 
 
-const add_items = async (req,res,next)=>{
+const add_items_id = async (req,res,next)=>{
     // console.log(req.params.id)
     var newShop = await shopRegistration.findOne({ _id : req.params.id})
     // console.log(newShop)
@@ -12,5 +12,5 @@ const add_items = async (req,res,next)=>{
     }
 
     module.exports = {
-        add_items:add_items
+        add_items:add_items_id
     }

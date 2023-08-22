@@ -1,9 +1,9 @@
 
-const providerModel = require("./../../loungeProviderSchema")
-const loungeRegistration = require("./../../loungeModelSchema");
+const providerModel = require("../../../module/loungeProviderSchema")
+const loungeRegistration = require("../../../module/loungeModelSchema");
 
 
-const L_admin = async (req,res,next)=>{
+const lounge_provider_admin = async (req,res,next)=>{
 
     var LoungeUser = await providerModel.findOne({ email: req.cookies.loungeProvider_email})
     var his_launges = await loungeRegistration.find({  loungeProviderId: LoungeUser._id })
@@ -17,5 +17,5 @@ const L_admin = async (req,res,next)=>{
   }
 
   module.exports = {
-    admin: L_admin
+    lounge_provider_admin_account : lounge_provider_admin
   }

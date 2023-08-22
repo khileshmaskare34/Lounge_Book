@@ -1,5 +1,5 @@
 
-const shopProviderSchema = require('./../../shopProviderSchema');
+const shopProviderSchema = require('../../../module/shopProviderSchema');
 
 const get_shop_reg =  async (req, res)=>{
     var email = req.cookies.shopProvider_email;
