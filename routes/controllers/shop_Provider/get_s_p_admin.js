@@ -1,7 +1,7 @@
 
-const shopProviderSchema = require('./../../shopProviderSchema');
-const shopRegistration= require('./../../shopModelSchema');
-const loungeModelSchema = require('../../loungeModelSchema');
+const shopProviderSchema = require('../../../module/shopProviderSchema');
+const shopRegistration= require('../../../module/shopModelSchema');
+const loungeModelSchema = require('../../../module/loungeModelSchema');
 
 
 const get_shop_provider_admin = async (req,res,next)=>{

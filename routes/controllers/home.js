@@ -2,7 +2,7 @@
 var express = require('express');
 var router = express.Router();
 
-const loungeRegistration = require("./../loungeModelSchema");
+const loungeRegistration = require("../../module/loungeModelSchema");
 
 
 

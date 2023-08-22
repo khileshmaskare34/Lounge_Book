@@ -1,9 +1,9 @@
-const providerModel = require("./../../loungeProviderSchema")
+const providerModel = require("../../../module/loungeProviderSchema")
 // const providerModel = require('../../loungeProviderSchema')
 const jwt = require('jsonwebtoken')
 
 
-const get_lounge_provider_login =   async function(req, res, next){
+const lounge_provider_login =   async function(req, res, next){
     var email = req.body.email
     const pass = req.body.password
   
@@ -36,5 +36,5 @@ const get_lounge_provider_login =   async function(req, res, next){
 
 
   module.exports ={
-    lounge_provider_login : get_lounge_provider_login
+    lounge_provider_login_account : lounge_provider_login
   }
