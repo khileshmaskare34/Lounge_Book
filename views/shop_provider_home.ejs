@@ -211,6 +211,69 @@
         }
     }
 
+    /* Your existing CSS rules */
+
+/* Add the following responsive styles */
+
+/* Mobile devices */
+@media (max-width: 768px) {
+  .container {
+      flex-direction: column;
+  }
+
+  .left,
+  .right {
+      width: 100%;
+  }
+
+  .welcome-heading {
+      width: 100%;
+      border-radius: 10px 10px 0 0;
+  }
+
+  .shop-provider-home {
+      padding: 10px;
+  }
+
+  .container,
+  .left,
+  .right {
+      padding: 10px;
+  }
+
+  button {
+      width: 100%;
+      margin-top: 10px;
+  }
+
+  ol {
+      margin: 0;
+      padding: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+      font-size: 16px;
+  }
+}
+
+/* Tablets and smaller laptops */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .shop-provider-home {
+      padding: 15px;
+  }
+}
+
+/* Larger screens */
+@media (min-width: 1025px) {
+  .shop-provider-home {
+      padding: 20px;
+  }
+}
+
+
     </style>
 </head>
 <body>
@@ -224,7 +287,7 @@
   
               <% for(var i=0;i< shops.length; i++){ %>
               <ol>
-                  <a href="/shopadminforaddingitems/<%= shops[i]._id %>"> <h1>Shop Name :  <%= shops[i].shopName %></h1> </a>
+                  <a href="/shopadminforaddingitems/<%= shops[i]._id %>"> <h1> :- Shop Name :  <%= shops[i].shopName %></h1> </a>
                   
                   <h3>station location: <%= shops[i].station_Name %></h3>
                   <div>

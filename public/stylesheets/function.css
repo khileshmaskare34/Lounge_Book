@@ -82,6 +82,8 @@ body {
 .functions input {
    flex: 1 1 100%; 
 }
-
+.functions label{
+  font-size: 3.3vw;
+}
 
 } 

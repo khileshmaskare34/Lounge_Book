@@ -1,282 +1,120 @@
-
-  *{
+/* Reset some default styles */
+body, h1, p {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  }
-  html,body{
-  width: 100%;
-  height: 100%;
-  font-family: Gilroy;
-  }
-  
-  .main{
-  position: relative;
+}
+
+/* Overall page styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.main {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2vw;
-  width: 100%;
-  height: 100%;
-  background-color: #e21717;
-  }
-  /* -------------left--------------------- */
-  .left{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border: 1px solid black;
-    width: 23vw;
-    height: 90vh;
-    /* background-color: #3498db; */
-  }
-  .right{
-    width: 60vw;
-    height: 90vh;
-    background-color: #ffffff;
-    }
-  
+  height: 100vh;
+}
 
+.left {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-    #left #upbox{
-        /* position: relative; */
-        display: flex;
-        align-items: center;
-        /* position: absolute; */
-        /* top: 3vh; */
-        /* left: 8vw; */
-        width: 100%;
-        height: 10vh;
-        /* background-color: #ba0909; */
-        }
-        #imgbox{
-        width: 6vh;
-        height: 6vh;
-        background-color: rgb(231, 226, 118);
-        border-radius: 50%;
-        margin-left: 30px;
-        }
-        #imgbox img{
-        width: 6vh;
-        height: 6vh;
-        background-color: rgb(231, 226, 118);
-        border-radius: 50%;
-        /* margin-left: 30px; */
-        }
-        
-        
-        #upbox>h3{
-        font-size: 30px;
-        margin-left: 15px;
-        }
-        
-        /*  -------------------------------midbox----------------- */
-        #left #midbox{
-        /* position: relative; */
-        /* position: absolute;   */
-        /* top: 17vh; */
-        /* left: 8vw; */
-        width: 100%;
-        height: 70vh;
-        /* background-color: #026700; */
-        font-family: Gilroy;
-        }
-        #order {
-        display: flex;
-        align-items: start;
-        padding-left: 2vw;
-        width: 23vw;
-        margin-top: 1px;
-        /* background-color: white; */
-        height: 6vh;
-        /* margin-top: -34px; */
-        border-bottom: 2px solid #dadada;
-        }
-        .ri-arrow-up-circle-fill{
-        font-size: 27px;
-        /* margin-left: 20px; */
-        
-        }
-        .ri-skip-right-line{
-        font-size: 20px;
-        /* margin-left: 90px; */
-        }
-        #order>h3{
-        font-size: 18px;
-        /* margin-left: 12px; */
-        font-family: "Gilroy";
-        font-weight: 500;
-        
-        }
-        #account{
-          padding-left: 2vw;
-        position: relative;
-         /* position: absolute; */
-         width: 100%;
-         height: 30%;
-         font-family: "Gilroy";
-         border-bottom: 2px solid #dadada;
-         /* background-color: aqua; */
-         display: flex;
-         flex-direction: column;
-         justify-content: center;
-         align-items: start;
-         gap: 2vh;
-        }
-        #account>h3{
-         /* position: absolute; */
-         /* top: 5%; */
-         /* left: 15%; */
-         font-family: "Gilroy";
-         font-weight: 500;
-        }
-        
-        .a{
-        /* margin-top: 15%; */
-        /* margin-left: 15%; */
-        font-family: "Gilroy";
-        font-weight: 500;
-        }
-        
-        .c{
-        /* margin-top: 6%; */
-        /* margin-left: 15%; */
-        font-family: "Gilroy";
-        font-weight: 500;
-        }
-        .addnewproduct{
-        
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          width: 100%;
-          height: 6vh;
-          /* background-color: #3498db; */
-        }
-        .addnewproduct>a{
-          padding: .3vw;
-          border: 1px solid black;
-          text-decoration: none;
-          font-size: 1.3vw;
-        }
-        
-        #payment{
-        padding-left: 2vw;
-        /* position: relative; */
-        /* position: absolute; */
-        /* top: 33%; */
-        width: 100%;
-        height: 30%;
-        font-family: "Gilroy";
-        /* background-color: rgb(107, 42, 213); */
-        border-bottom: 2px solid #dadada;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: start;
-        gap: 2vh;
-        }
-        #rap{
-        display: flex;
-        gap: 3vw;
-        }
-        .ri-bank-card-fill{
-        /* position: absolute; */
-        font-size: 20px;
-        /* top: 10%; */
-        /* margin-left: 210px; */
-        }
-        
-        #rap>h3{
-        font-family: "Gilroy";
-        font-weight: 400;
-        }
-        
-        .m{
-        font-family: "Gilroy";
-        font-weight: 500;
-        }
-        
-        .n{
-        font-family: "Gilroy";
-        font-weight: 500;
-        }
-        
-        .o{
-        font-family: "Gilroy";
-        font-weight: 500;
-        }
-        
-        #others{
-          padding-left: 2vw;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: start;
-          gap: 1.5vh;
-        /* position: absolute; */
-        /* bottom: 5%; */
-        width: 100%;
-        height: 30%;
-        
-            /* background-color: aqua; */
-        }
-        #others>h3{
-        /* position: absolute; */
-        /* top: 5%; */
-        /* left: 15%; */
-        font-family: "Gilroy";
-        font-weight: 500;
-        }
-        .w{
-        /* margin-top: 12%; */
-        /* margin-left: 15%; */
-        font-family: "Gilroy";
-        font-weight: 500;
-        }
-        .x{
-        /* margin-top: 4%; */
-        /* margin-left: 15%; */
-        font-family: "Gilroy";
-        font-weight: 500;
-        }
-        .y{
-        /* margin-top: 4%; */
-        /* margin-left: 15%; */
-        font-family: "Gilroy";
-        font-weight: 500;
-        }
-        .z{
-        /* margin-top: 4%; */
-        /* margin-left: 15%; */
-        font-family: "Gilroy";
-        font-weight: 500;
-        }
-        
-        /* --------------------------bottombox--------------------- */
-        
-        #left #bottombox{
-        display: flex;
-        align-items: center;
-        /* position: absolute; */
-        /* bottom: 1vh; */
-        /* left: 8vw; */
-        width: 23vw;
-        height: 6vh;
-        /* background-color: #ec0a0a; */
-        }
-        .ri-logout-circle-line{
-        font-size: 27px;
-        margin-left: 20px;
-        
-        }
-        
-        #bottombox>h3{
-        font-size: 18px;
-        margin-left: 12px;
-        font-family: "Gilroy";
-        font-weight: 500;
-        
-        }
-        
-        
+/* User name section */
+#imgbox img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Order seats section */
+#order-seats {
+  margin-top: 20px;
+}
+
+#order-seats h1 {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+/* Email and phone section */
+#contact-info {
+  margin-top: 20px;
+}
+
+#contact-info p {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+/* Edit and logout buttons */
+#buttons {
+  margin-top: 20px;
+}
+
+.button {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.button:last-child {
+  margin-right: 0;
+}
+
+/* Hover effect for buttons */
+.button:hover {
+  background-color: #0056b3;
+}
+/* ... (previously defined styles) ... */
+
+/* Email and phone section */
+#contact-info {
+  margin-top: 20px;
+}
+
+#contact-info p {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+/* Edit and logout buttons */
+#buttons {
+  margin-top: 20px;
+}
+
+.button {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.button:last-child {
+  margin-right: 0;
+}
+
+/* Hover effect for buttons */
+.button:hover {
+  background-color: #0056b3;
+}

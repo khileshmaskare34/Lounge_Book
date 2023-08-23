@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>userAccountPage</title>
-    <link rel="stylesheet" href="/stylesheets/userAccountPage.css">
+    <link rel="stylesheet" href="/stylesheets/userAccountPage.css">    
 </head>
 <body>
     <div class="main">
        <div class="left">
         <div id="upbox">
             <div id="imgbox">
-                 <!-- <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt=""> -->
+                 <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="">
              </div>
 
              <h1><%=user.name%></h1>
@@ -21,7 +21,57 @@
                <%  }  %>
             <%  }   %>
        
-        </div> 
+        </div>  -->
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>userAccountPage</title>
+            <link rel="stylesheet" href="/stylesheets/userAccountPage.css">    
+        </head>
+        <body>
+            <div class="main">
+               <div class="left">
+                <div id="upbox">
+                    <div id="imgbox">
+                         <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="">
+                     </div>
+        
+                     <h1><%=user.name%></h1>
+                    <%  for(var i =0;i< orders.length;i++){  %>
+                       <%  for(var j = 0;j < orders[i].seats.length;j++){ %>
+                             <h1>Seats Booked : <%= orders[i].seats[j] %></h1>
+                       <%  }  %>
+                    <%  }   %>
+               
+                    <!-- Email and Phone section -->
+                    <div id="contact-info">
+                        <p>Email: <%=user.email%></p>
+                        <p>Phone No. : <%=user.phone%></p>
+                    </div>
+                    
+                    <!-- Edit and Logout buttons -->
+                    <div id="buttons">
+                        <button class="button" id="editButton">Edit</button>
+                        <button class="button" id="logoutButton">Logout</button>
+                    </div>
+                    
+                </div>
+               </div>
+            </div>
+        </body>
+        </html>
+        
+
+
+
+
+
+
+
+
     <!-- <div id="midbox">
         <div id="order">
             <i class="ri-arrow-up-circle-fill"></i>

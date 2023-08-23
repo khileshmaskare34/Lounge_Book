@@ -1,16 +1,17 @@
 const shopItems = require('../../../module/shopItems');
-const shopRegistration= require('../../../module/shopModelSchema');
+const shopRegistration = require('../../../module/shopModelSchema');
+
+const particuler_item = async (req, res, next) => {
+    
+        var item = await shopItems.findOne({ _id: req.params.id });
+
+        var shop_name = await shopRegistration.findOne({  });
 
 
-const particuler_item = async (req, res, next)=>{
-    var item = await shopItems.findOne({ _id: req.params.id})
-    console.log("item"+ item)
-    var shop_name = await shopRegistration.findOne({ });
-    console.log("lucky"+shop_name);
-  
-    res.render('foodSelection', {item, shop_name})
+        res.render('foodSelection', { item, shop_name });
+   
 }
 
 module.exports = {
-    particuler_item_item : particuler_item
+    particuler_item_item: particuler_item
 }
