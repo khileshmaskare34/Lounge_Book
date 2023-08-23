@@ -44,7 +44,8 @@ const food_order = async (req, res, next) => {
         });
 
         order_item.save().then(function () {
-            res.send("Product saved in the database");
+            // res.send("Product saved in the database");
+            res.redirect('/after_loungeBook_loggedInIndex')
         });
     } catch (error) {
         console.error("An error occurred:", error);

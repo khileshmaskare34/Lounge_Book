@@ -47,10 +47,12 @@ body {
   border-radius: 8px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   background-color: #fff;
+  text-shadow: 1px 1px black;
+  
 }
 
 .lounge {
-  background-color: #cabc6e;
+  background-color: #585232;
   color: white;
 }
 
@@ -69,17 +71,22 @@ body {
 
 button>a{
 text-decoration: none;
-color: black;
+
+color: #f0f0f0;
 }
 button{
-  margin-top: 8%;
+  margin-top: 1%;
   margin-left: 35%;
   display: inline-block;
   padding: 10px 20px;
   text-decoration: none;
-  border-radius: 4px;
+  /* border-radius: 4px; */
   font-weight: 700;
-  
+  border: none;
+ border-top-left-radius: 10px;
+ border-bottom-right-radius: 10px;
+  background-color: rgb(217,4,3);
+ 
   font-size:16px;
   transition: background-color 0.3s ease-in-out;
 }
@@ -95,4 +102,37 @@ button{
 
 button:hover {
   background-color: rgb(203, 134, 134);
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
+
+
+/* Media Queries for Responsive Design */
+
+/* Small devices (up to 576px) */
+@media (max-width: 576px) {
+  #main {
+    height: auto; /* Adjust the height as needed */
+    margin: 10px;
+    padding: 20px;
+  }
+  
+  .user_boxes {
+    flex-direction: column;
+  }
+
+  .user_box {
+    height: auto; /* Adjust the height as needed */
+    margin: 10px 0;
+  }
+
+  button {
+    margin-left: 0;
+    width: 100%; /* Make the buttons full width */
+  }
 }
