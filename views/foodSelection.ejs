@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,10 +23,10 @@
     <button type="submit">order now</button>
 </form>
 </body>
-</html>
+</html> -->
 
 
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -52,6 +52,7 @@
             width: 100%;
             max-width: 400px;
             text-align: center;
+            
         }
 
         h1 {
@@ -108,12 +109,12 @@
 </head>
 <body>
     <form action="/foodOrder" method="post">
-        <h1>shop name : <%= shop_name.shopName %></h1>
+        <h1>Shop Name : <%= shop_name.shopName %></h1>
         <img src="/upload/<%= item.Image %>" alt="Item Image">
         <label for="itemname">Item Name:</label>
         <input type="text" name="itemname" value="<%= item.item_Name %>" disabled>
-        <label for="itemid">Item ID:</label>
-        <input type="text" name="itemid" value="<%= item._id %>" disabled>
+        <!-- <label for="itemid">Item ID:</label>
+        <input type="text" name="itemid" value="<%= item._id %>" disabled> -->
 
         <label for="quantity">Quantity (1-10):</label>
         <input type="number" id="quantity" name="quantity" min="1" max="10" >
@@ -123,4 +124,4 @@
         <button type="submit">Order Now</button>
     </form>
 </body>
-</html> -->
+</html> 
