@@ -13,7 +13,9 @@ const longeOrders = require('./../module/LoungeOrders')
 const orderItem  = require('../module/orderFood');
 const shop_items = require('../module/shopItems');
 const shopItems = require('../module/shopItems');
-
+const Otp = require('../module/otp');
+const crypto =require("crypto")
+const nodemailer = require('nodemailer');
 const isLoggedIn = require('./../module/isLoggedIn')
 
 const moment = require('moment');
@@ -283,5 +285,150 @@ router.get('/after_loungeBook_loggedInIndex', async function(req, res){
   let shop_name = await shopRegistration.find();
     res.render('after_loungeBook_loggedInIndex', {station,lounge, all_items, shops1});
   })
+
+  router.get('/forgot', (req, res)=>{
+    res.render('forgot');
+  })
+  // Route to send an OTP for password reset
+router.post('/forgot', async (req, res) => {
+  try {
+    const userEmail = req.body.newemail;
+    const user = await users.findOne({ email: userEmail });
+
+    if (!user) {
+      return res.status(400).json({
+        statusText: 'error',
+        message: 'Invalid email',
+      });
+    }
+
+    // Generate a random OTP (4 digits)
+    const otpCode = Math.floor(1000 + Math.random() * 9000);
+
+    // Save the OTP in your database
+    const otpData = new Otp({
+      email: userEmail,
+      code: otpCode,
+      expireIn: new Date().getTime() + 60 * 1000, // OTP expiration time (5 minutes)
+    });
+
+    await otpData.save();
+
+    // Send the OTP via email
+    await sendOtpEmail(userEmail, otpCode);
+
+     res.render('otp',{userEmail, otpCode});
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      statusText: 'error',
+      message: 'An error occurred while processing your request.',
+    });
+  }
+});
+
+// Function to send an OTP via email
+async function sendOtpEmail(email, otpCode) {
+  try {
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'khileshmaskare03@gmail.com',
+        pass: 'cerxgpsssmijkyil',
+      },
+    });
+
+    const mailOptions = {
+      from: 'khileshmaskare03@gmail.com',
+      to: email,
+      subject: 'Your OTP for Password Reset',
+      text: `Your OTP code for password reset is: ${otpCode}`,
+    };
+
+    const info = await transporter.sendMail(mailOptions);
+    console.log('Email sent: ' + info.response);
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
+
+router.post('/otp', async (req, res, next) => {
+  const otpCode = req.body.otpNumber;
+  
+  try {
+    const otpData = await Otp.findOne({ code: otpCode });
+    
+    if (!otpData) {
+      return res.status(400).json({
+        statusText: 'error',
+        message: 'Invalid OTP code',
+      });
+    }
+
+    const currentTime = new Date().getTime();
+    const diff = otpData.expireIn - currentTime;
+
+    if (diff < 0) {
+      return res.status(400).json({
+        statusText: 'error',
+        message: 'Token Expired',
+      });
+    }
+
+    // If the OTP code is valid and not expired, render the 'reset-password' template
+    res.render('reset-password', { otpData });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      statusText: 'error',
+      message: 'An error occurred while processing your request.',
+    });
+  }
+});
+
+router.post('/reset', async (req, res) => {
+  const { email, newPassword, otpCode } = req.body;
+
+  try {
+    // Find the OTP data in your database
+    const otpData = await Otp.findOne({ email, code: otpCode });
+
+    if (!otpData || otpData.expireIn < new Date().getTime()) {
+
+      const message = "The OTP has expired. Please request a new OTP.";
+      return res.render('reset-password', { message, otpData });
+    }
+
+    // Find the user associated with the email in otpData
+    const user = await users.findOne({ email });
+
+    if (!user) {
+      return res.status(400).json({
+        statusText: 'error',
+        message: 'User not found.',
+      });
+    }
+
+    // Update the user's password with the new one
+    user.password = newPassword;
+
+    // Save the updated user data
+    await user.save();
+
+    // Delete the OTP data (since it's no longer needed)
+    // await otpData.remove();
+
+    res.redirect('/login');
+    
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      statusText: 'error',
+      message: 'An error occurred while processing your request.',
+    });
+  }
+});
 
 module.exports = router;
