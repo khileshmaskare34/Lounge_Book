@@ -3,29 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login Page</title>
     <link rel="stylesheet" href="/stylesheets/login.css">
     <link rel="shortcut icon" href="\images\logot.png" type="image/x-icon">
 </head>
 <body>
-      <div class="form-container">
-        <h2>Login</h2>
-        <form class="login-form" action="/login" method="post">
-          <div>
-            <input type="email" id="email" placeholder="email" name="email" required />
-          </div>
-          <div>
-            <input type="password" id="password" placeholder="Password" name="password" required/>
-          </div>
-
-          <button type="submit">Login</button> 
-          <button class="google-btn">Login with Google</button>
-          
-          <a href="/forgot">forgot password</a>
-
-          <p class="toggle-form-login">If you don't have account? Click here to register</p>
-        </form>
-        <a href="/register">Register</a>
-      </div>
+  <% include ./footer/nav.ejs %>
+    <div class="main-container">
+        <div class="image-container">
+            <img src="../images/WhatsApp Image 2023-07-17 at 14.41.10.jpg" alt="Table Book Image">
+        </div>
+        <div class="form-container">
+            <h2>Login</h2>
+            <form class="login-form" action="/login" method="post">
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" name="email" required />
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" name="password" required/>
+                </div>
+                <button type="submit">Login</button>
+                <button class="google-btn">Login with Google</button>
+                <p class="toggle-form-login">If you don't have an account? Click here to register</p>
+            </form>
+            <a href="/register">Register</a>
+        </div>
+    </div>
 </body>
-</html> 
+</html>

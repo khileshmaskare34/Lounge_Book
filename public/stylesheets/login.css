@@ -1,86 +1,109 @@
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, sans-serif;
+/* Reset some default styles */
+body, h2, h3, p, label {
   margin: 0;
   padding: 0;
+  font-size: 16px; /* Set default font size */
+}
+
+/* Main container */
+.main-container {
   display: flex;
-  align-items: center;
+  height: 85vh;
+}
+
+/* Image container */
+.image-container {
+  flex: 1;
+  display: flex;
   justify-content: center;
-  height: 100vh;
-  background-color: #f2f2f2;
+  align-items: center;
+  background-color: #fff;
 }
 
+.image-container img {
+  max-height: 77%;
+  max-width: 95%;
+  border-radius: 20px; /* Increase the border-radius to make it a circle */
+  transition: transform 0.3s ease;
+}
+
+.image-container:hover img {
+  transform: scale(1.05);
+}
+
+/* Form container */
 .form-container {
-  max-width: 400px;
-  width: 100%;
-  padding: 20px;
-  background-color: #ffffff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  position: relative;
-  overflow: hidden;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../images/bg-image.jpg'); /* Replace with your image path */
+  background-size: cover;
+  background-position: center;
+  padding: 40px;
+  box-sizing: border-box;
+  height: 88vh; /* Set the maximum height for the form container */
 }
 
-.form-container h2 {
+.login-form {
   text-align: center;
-  margin-bottom: 20px;
 }
 
-.form-container form {
-  transition: transform 0.6s ease-in-out;
+.login-form div {
+  margin: 15px 0;
 }
 
-.form-container.register-form {
-  transform: translateX(400px);
+.login-form label {
+  display: block;
+  text-align: left;
+  margin-bottom: 10px;
+  font-size: 18px;
 }
 
-.form-container.login-form {
-  transform: translateX(0);
-}
-
-.form-container.register-form .login-form {
-  transform: translateX(-400px);
-}
-
-.form-container.register-form h2 {
-  margin-bottom: 30px;
-}
-
-.form-container input[type="text"],
-.form-container input[type="password"],
-.form-container input[type="email"] {
+.login-form input {
+  padding: 12px;
   width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
   border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 13px;
+  font-size: 16px;
 }
 
-.form-container button {
-  width: 100%;
-  padding: 10px;
-  background-color: #4caf50;
-  color: #ffffff;
+button {
+  background-color: #d90403;
+  color: #fff;
+  padding: 14px 24px;
   border: none;
-  border-radius: 3px;
   cursor: pointer;
-}
-.form-container .google-btn{
-  margin-top: 1vh;
-}
-.form-container button:hover {
-  background-color: #45a049;
+  transition: background-color 0.3s ease;
+  border-radius: 4px;
+  width: 100%;
+  margin-top: 15px;
+  font-size: 18px;
 }
 
-.form-container .toggle-form {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 12px;
-  text-decoration: underline;
-  color: #666;
-  cursor: pointer;
+button:hover {
+  background-color: #068932;
 }
+
+.toggle-form-login {
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .image-container,
+  .form-container {
+    flex: none;
+    height: auto;
+  }
+}
+
+/* Additional media queries for other devices */
+/* Add your media queries as needed */

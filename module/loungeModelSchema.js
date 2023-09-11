@@ -19,7 +19,8 @@ var loungeSchema = mongoose.Schema({
         type:Number
     },
     stationLocation:{
-        type: String
+        type: String,
+        unique:true,
     }
 })
 

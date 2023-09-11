@@ -1,8 +1,4 @@
-<<<<<<< HEAD
- <!DOCTYPE html>
-=======
 <!-- <!DOCTYPE html>
->>>>>>> 26a9156416fb73d39fb71189d88ccaf9cf5b8fbe
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -30,102 +26,111 @@
 </html> -->
 
 
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food Order Form</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        
-        form {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-            
-        }
-
-        h1 {
-            color: #ff6347;
-            margin-bottom: 10px;
-        }
-
-        img {
-            max-width: 100%;
-            height: 50vh;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        label {
-            display: block;
-            color: #333;
-            font-weight: bold;
-            margin-bottom: 5px;
-            text-align: left;
-        }
-
-        input[type="text"],
-        input[type="number"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-
-        input[type="number"] {
-            width: 50px;
-        }
-
-        button {
-            background-color: #ff6347;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            padding: 12px 24px;
-            font-size: 18px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            width: 100%;
-        }
-
-        button:hover {
-            background-color: #ff4d29;
-        }
-    </style>
+    <title>Food Order</title>
+    <link rel="stylesheet" href="/stylesheets/nav.css">
+    <link rel="stylesheet" href="/stylesheets/foodSelection.css"> <!-- Link to your custom CSS file for styling -->
 </head>
+
 <body>
-    <form action="/foodOrder" method="post">
-        <h1>Shop Name : <%= shop_name.shopName %></h1>
-        <img src="/upload/<%= item.Image %>" alt="Item Image">
-        <label for="itemname">Item Name:</label>
-        <input type="text" name="itemname" value="<%= item.item_Name %>" disabled>
-        <!-- <label for="itemid">Item ID:</label>
-        <input type="text" name="itemid" value="<%= item._id %>" disabled> -->
+    <header class="header">
+        <img src="\images\logo.jpg" alt="" class="logo">
+        <nav class="navbar">
+          <ul class="main-nav">
+            <li><a href="/after_loungeBook_loggedInIndex">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#footer-container" >Contact</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="/userAccountPage">User Account</a></li>
+          </ul>
+        </nav>
+        <button class="menu-toggle">&#9776;</button>
+    </header>
+   <header>
+       <h1>Welcome to <span class="company-name">Company Name</span></h1>
+   </header>
+   <main>
+        <section class="item-details">
+            <h2>Item Details</h2>
+            <h3>Shop Name: <span class="shop-name"><%= shop_name.shopName %></span></h3>
+            <img src="/upload/<%= item.Image %>" alt="Item Image">
+        </section>
 
-        <label for="quantity">Quantity (1-10):</label>
-        <input type="number" id="quantity" name="quantity" min="1" max="10" >
+       <section class="order-form">
+           <h2>Order Food</h2>
+           <form action="/foodOrder" method="post">
+               <div class="form-group">
+                   <label for="itemname">Item Name:</label>
+                   <input type="text" id="itemname" name="itemname" value="<%= item.item_Name %>">
+               </div>
 
-        <label for="price">Price:</label>
-        <input type="text" name="price" value="<%= item.price %>" disabled>
-        <button type="submit">Order Now</button>
-    </form>
+               <div class="form-group">
+                   <label for="itemid">Item ID:</label>
+                   <input type="text" id="itemid" name="itemid" value="<%= item._id %>">
+               </div>
+
+               <div class="form-group">
+                   <label for="quantity">Quantity (between 1 and 10):</label>
+                   <input type="number" id="quantity" name="quantity" min="1" max="10">
+               </div>
+ 
+               <div class="form-group">
+                   <!-- <button type="submit">Order Now</button> -->
+                  <button type="submit" id="rzp-button1">Pay with Razorpay</button>
+
+               </div>
+           </form>
+       </section>
+   </main>
+
+   <footer>
+       <p>&copy; 2023 Company Name. All rights reserved.</p>
+   </footer>
+
+   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+      <script>
+    document.getElementById('rzp-button1').onclick = async function (e) {
+        e.preventDefault();
+
+        let response = await fetch('http://localhost:3000/payment', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                amount: 500, // Change this to the desired amount in INR
+            })
+        });
+
+        let orderData = await response.json();
+        console.log(orderData)
+
+        var options = {
+            "key": "rzp_test_05baNxbdPygtnZ", // Replace with your Razorpay API key
+            "amount": orderData.order.amount, // Use the amount from the response
+            "currency": "INR",
+            "order_id": orderData.order.id, // Use the Order ID from the response
+            "handler": function (response) {
+                alert(response.razorpay_payment_id);
+                alert(response.razorpay_order_id);
+                alert(response.razorpay_signature);
+            },
+        };
+
+        var rzp1 = new Razorpay(options);
+        rzp1.open();
+    }
+</script>
 </body>
-</html> 
+</html>

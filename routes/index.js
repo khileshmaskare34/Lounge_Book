@@ -61,6 +61,30 @@ const edit_item = require('./controllers/shop_item/editItem')
 const food_order = require('./controllers/shop_item/foodOrder')
 const particuler_item = require('./controllers/shop_item/particulerItem')
 
+
+
+const Razorpay = require('razorpay');
+
+const razorpay = new Razorpay({
+  key_id: 'rzp_test_05baNxbdPygtnZ',
+  key_secret: 'MxREinR1HOpGfYxQLQEWnN6Q', // Removed the extra space at the end
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // ---------------------multer require-----------------------------
 const multer = require('multer')
 const path=require('path');
@@ -259,7 +283,9 @@ var newOrder = new longeOrders({
 })
 newOrder.save().then(function(dets){
   res.cookie('longe_booked_by_user', newOrder.loungeId, { httpOnly: true, maxAge: 1.728e8 });
-  res.redirect('/after_loungeBook_loggedInIndex')
+  // res.redirect('/after_loungeBook_loggedInIndex')
+  // console.log(newOrder.userName)
+  res.render("selected_seat", {newOrder});
 })
 })
 
@@ -427,6 +453,32 @@ router.post('/reset', async (req, res) => {
     return res.status(500).json({
       statusText: 'error',
       message: 'An error occurred while processing your request.',
+    });
+  }
+});
+
+
+router.post('/payment', async (req, res) => {
+  // Access the amount from the request body correctly
+  const { amount } = req.body;
+
+  try {
+    const order = await razorpay.orders.create({
+      amount: amount * 100,  // amount in the smallest currency unit (paise for INR)
+      currency: "INR",
+      receipt: "order_rcptid_11"
+    });
+
+    res.status(201).json({
+      success: true,
+      order,
+      amount,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: 'Error creating the order.',
     });
   }
 });
