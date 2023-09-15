@@ -43,7 +43,6 @@ input[type="email"] {
     width: 66%;
     color: #8a97a0;
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
-    margin-bottom: 30px;
     margin-top: 20px;
 }
 
@@ -66,4 +65,10 @@ button[type="submit"]:hover {
 #nameError {
     color: #ff0000;
     display: none;
+}
+
+.error-message{
+}
+.error-message>h3{
+    text-align: start;
 }

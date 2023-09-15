@@ -133,11 +133,15 @@ body, h2, h3, p, label {
           <label for="email">Shop Provider Email</label>
           <input type="email" id="email" name="shopEmail" placeholder="email" required>
         </div>
+
         <div class="form-group d-flex p-1 flex-column">
           <label for="password" >Password</label>
-          
           <input type="password" id="password" name="shopPassword" placeholder="password" required>
         </div>
+
+        <div id="error-message" class="error-message">
+          <h3 style="color: red;"> <%= error %> </h3> <!-- Display the error message here -->
+       </div>
 
         <button type="submit">Login</button>
         <button class="google-btn">Login with Google</button>
@@ -145,7 +149,7 @@ body, h2, h3, p, label {
         <p class="toggle-form-login">If you don't have an account? Click here to register</p>
 
       </form>
-
+      <a href="/forgot-shop-provider">forgot</a> <br> <br>
       <a href="/shopProvider_register">Register</a>
     </div>
   </div>

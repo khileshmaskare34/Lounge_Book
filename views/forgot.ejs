@@ -12,6 +12,11 @@
     <form action="/forgot" method="post">
         <label for="mail">Email</label><br>
         <input type="email" id="name" name="newemail" placeholder="Enter your email address" required onblur="validateName(name)">
+
+        <div id="error-message" class="error-message">
+            <h4 style="color: red;"> <%= error %> </h4> <!-- Display the error message here -->
+         </div>
+
         <button type="submit">Send OTP</button>
         <span id="nameError">There was an error with your email</span>
     </form>

@@ -82,3 +82,15 @@ h1 {
 .lounge-details a:hover {
     background-color: #2980b9;
 }
+
+/* ... (previous CSS code) ... */
+
+/* Styling for the lounge image */
+.lounge-image img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    /* Add additional styling here, if needed */
+}
+
+/* ... (remaining CSS code) ... */

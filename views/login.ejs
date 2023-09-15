@@ -5,31 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <link rel="stylesheet" href="/stylesheets/login.css">
+    <link rel="stylesheet" href="\stylesheets\nav.css">
+
     <link rel="shortcut icon" href="\images\logot.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+
 </head>
 <body>
-  <% include ./footer/nav.ejs %>
-    <div class="main-container">
+  <header class="header">
+    <img src="\images\logo.jpg" alt="" class="logo">
+    <nav class="navbar">
+      <ul class="main-nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#footer-container" >Contact</a></li>
+        <li><a href="#">Services</a></li>
+        <!-- <li><a href="/get-started" id="contect">Login/Sign up</a></li> -->
+      </ul>
+    </nav>
+    <button class="menu-toggle">&#9776;</button>
+  </header>
+  <div class="main-container">
+   
         <div class="image-container">
             <img src="../images/WhatsApp Image 2023-07-17 at 14.41.10.jpg" alt="Table Book Image">
         </div>
-        <div class="form-container">
-            <h2>Login</h2>
-            <form class="login-form" action="/login" method="post">
-                <div>
-                    <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="Enter your email" name="email" required />
-                </div>
-                <div>
-                    <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="Enter your password" name="password" required/>
-                </div>
-                <button type="submit">Login</button>
-                <button class="google-btn">Login with Google</button>
-                <p class="toggle-form-login">If you don't have an account? Click here to register</p>
-            </form>
-            <a href="/register">Register</a>
-        </div>
+
+      <div class="form-container">
+        <h2>Login</h2>
+        <form class="login-form" action="/login" method="post">
+            <div>
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="Enter your email" name="email" required />
+            </div>
+            <div>
+              <label for="password">Password</label>
+              <input type="password" id="password" placeholder="Enter your password" name="password" required />
+            </div>
+
+            <div id="error-message" class="error-message">
+               <h3 style="color: red;"> <%= error %> </h3> <!-- Display the error message here -->
+            </div>
+           
+            <button type="submit">Login</button>
+            <button class="google-btn">Login with Google</button>
+            <br>
+            <a href="/forgot">forgot</a> <br> <br>
+            <a href="/register">register</a>
+          </form>
+      </div>    
     </div>
+  
 </body>
 </html>

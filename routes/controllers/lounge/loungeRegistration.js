@@ -20,6 +20,8 @@ const lounge_registration = async (req, res, next) => {
     } catch (error) {
         console.error("An error occurred:", error);
         res.status(500).send("An error occurred");
+        // return res.status(401).redirect('/loungeRegistration', { error: 'This station name is all ready registered !' });
+
     }
 }
 

@@ -8,13 +8,17 @@ const shop_provider_login = async (req, res, next) => {
         const shoppass = req.body.shopPassword;
 
         if (!shopemail || !shoppass) {
-            res.send("Please enter valid email and password");
+            // res.send("Please enter valid email and password");
+            return res.status(401).render('shopProvider_login', { error: 'Incorrect email or password !' });
+
         }
 
         const shopUser = await shopProviderSchema.findOne({ shopEmail: shopemail });
 
         if (!shopUser || !(shoppass === shopUser.shopPassword)) {
-            res.send("Please enter the right password and email");
+            // res.send("Please enter the right password and email");
+            return res.status(401).render('shopProvider_login', { error: 'Incorrect email or password !' });
+
         } else {
             var shops = await shopRegistration.find({ shopProviderId: shopUser._id });
 

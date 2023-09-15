@@ -8,11 +8,39 @@
       margin: 0;
       padding: 0;
     }
-
+    #main{
+      display: flex;
+      width: 100%;
+      height: 100vh;
+    }
+    .img{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0vh 2vw;
+      width: 50%;
+      height: 100%;
+      /* background-color: lightblue; */
+    }
+    .img>img{
+      width: 100%;
+      /* height: 100%; */
+      object-fit: cover;
+    }
+    .form{
+      display: flex;
+      align-items: center;
+      width: 50%;
+      height: 100%;
+      /* background-color: lightcoral; */
+    }
     .container {
-      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 400px;
       margin: 20px auto;
-      padding: 20px;
+      padding: 20px; 
       border: 1px solid #ccc;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
@@ -35,7 +63,7 @@
     input[type="password"],
     input[type="tel"] {
       width: 100%;
-      padding: 10px;
+      padding: 10px 2px;
       font-size: 16px;
       border-radius: 5px;
       border: 1px solid #ccc;
@@ -44,7 +72,7 @@
     button {
       display: block;
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       font-size: 16px;
       background-color: #4CAF50;
       color: white;
@@ -53,47 +81,58 @@
       cursor: pointer;
     }
 
-    .google-btn {
-      background-color: #DB4437;
+    @media (max-width: 600px) {
+      #main{
+        /* display: flex; */
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <h2>Lounge Registration</h2>
+  <div id="main">
+    <div class="img">
+      <img src="/images/WhatsApp Image 2023-07-17 at 14.41.13.jpg" alt="">
+    </div>
+    <div class="form">
+      <div class="container">
+        <h2>Lounge Registration</h2>
+    
+        <form id="registration-form" action="/loungeRegistration" method="post">
+    
+          <div class="form-group">
+            <label for="name">Lounge Name</label>
+            <input type="text" id="name" name="loungeName" placeholder="Name" required>
+          </div>
+    
+          <div class="form-group">
+            <label for="email">Lounge Email</label>
+            <input type="email" id="email" name="loungeEmail" placeholder="Email" required>
+          </div>
+    
+          <div class="form-group">
+            <label for="phone">Lounge Phone Number</label>
+            <input type="tel" id="phone" name="loungePhoneNo" placeholder="Phone no" >
+          </div>
+    
+          <div class="form-group">
+            <label for="phone">Lounge No Of Seats</label>
+            <input type="tel" id="phone" name="noOfSeats" placeholder="No of seats" >
+          </div>
+    
+          <div class="form-group">
+            <label for="phone">Station Name</label>
+            <input type="tel" id="phone" name="stationLocation" placeholder="Station name" >
+          </div>
 
-    <form id="registration-form" action="/loungeRegistration" method="post">
-
-      <div class="form-group">
-        <label for="name">Lounge Name</label>
-        <input type="text" id="name" name="loungeName" required>
+    
+          <input type="text" name="loungeProviderId" value="<%= loungeProvider._id%>" style="visibility: hidden;">
+    
+          <button type="submit">Register</button>
+        </form>
       </div>
-
-      <div class="form-group">
-        <label for="email">Lounge Email</label>
-        <input type="email" id="email" name="loungeEmail" required>
-      </div>
-
-      <div class="form-group">
-        <label for="phone">Lounge Phone Number</label>
-        <input type="tel" id="phone" name="loungePhoneNo" >
-      </div>
-
-      <div class="form-group">
-        <label for="phone">Lounge No Of Seats</label>
-        <input type="tel" id="phone" name="noOfSeats" >
-      </div>
-
-      <div class="form-group">
-        <label for="phone">Station Name</label>
-        <input type="tel" id="phone" name="stationLocation" >
-      </div>
-
-      <input type="text" name="loungeProviderId" value="<%= loungeProvider._id%>" style="visibility: hidden;">
-
-      <button type="submit">Register</button>
-    </form>
+    </div>
   </div>
 </body>
 </html>

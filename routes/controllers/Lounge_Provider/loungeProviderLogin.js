@@ -7,13 +7,17 @@ const lounge_provider_login = async (req, res, next) => {
         const pass = req.body.password;
 
         if (!email || !pass) {
-            res.send("Please enter valid email and password");
+            return res.status(401).render('loungeProvider_login', { error: 'Incorrect email or password !' });
+
+            // res.send("Please enter valid email and password");
         }
 
         const LoungeUser = await providerModel.findOne({ email: email });
 
         if (!LoungeUser || !(pass === LoungeUser.password)) {
-            res.send("Please enter the right password and email");
+            // res.send("Please enter the right password and email");
+            return res.status(401).render('loungeProvider_login', { error: 'Incorrect email or password !' });
+
         }
 
         const token = jwt.sign(
