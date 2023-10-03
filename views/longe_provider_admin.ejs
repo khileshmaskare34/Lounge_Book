@@ -152,6 +152,9 @@
 <body>
     <div id="main">
         <h1>Welcome,<span class="username"><%= LoungeUser.name %></span> </h1>
+        <form action="/logout" method="POST">
+            <button class="btn btn-danger mt-2" >logout</button>
+        </form>
         <!-- <h2>Your Registered Lounges</h2> -->
     <div class="lounge-box .container " >
         <% for (var i = 0; i < his_launges.length; i++) { %>
@@ -200,6 +203,8 @@
             </div>
             <input type="text" name="loungeProviderId" value="<%= loungeProvider._id%>" style="visibility: hidden;">
             <button type="submit">Register</button>
+
+          
         </form>
     </div>
     
