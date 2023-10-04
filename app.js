@@ -25,7 +25,7 @@ app.set('view engine', 'ejs');
 // app.use(expressSession({
 //   resave:false,
 //   saveUninitialized:false,
-//   secret:'hey buddy hey buddy'
+//   secret:'mynameispulkitupadhyayfromharda'
 // }));
 
 // app.use(passport.initialize());

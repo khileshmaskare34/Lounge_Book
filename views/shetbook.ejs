@@ -10,6 +10,7 @@
 <body>
 
 
+
   <div id="main">
     <div class="upperform">
       <h1>Lounge Name: <span><%= launge.loungeName %> </span></h1>
@@ -27,7 +28,7 @@
           <% for(var i=0;i< launge.noOfSeats; i++){%>
             <tr>
               <form action="/choosen/<%= launge._id %>" method="post">
-                <% for(var i=0;i< launge.noOfSeats; i++){ %>
+                  <% for(var i=0;i< launge.noOfSeats; i++){ %>
                   <% if(i%10==0){ %>
                       <br>
                   <% } %>

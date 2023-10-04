@@ -285,6 +285,8 @@
 </head>
 <body>
     <!-- Your existing HTML code here -->
+    <% include ./footer/nav.ejs %>
+
     <div class="shop-provider-home">
       <h1 class="welcome-heading  h-50">Welcome <%= shopUser.shopName %> </h1>
       <form action="/logout" method="POST">

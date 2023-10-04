@@ -150,6 +150,7 @@
     </style>
 </head>
 <body>
+    <% include ./footer/nav.ejs %>
     <div id="main">
         <h1>Welcome,<span class="username"><%= LoungeUser.name %></span> </h1>
         <form action="/logout" method="POST">

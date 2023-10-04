@@ -3,7 +3,7 @@ var express = require('express');
 var router = express.Router();
 const jwt = require('jsonwebtoken');
 
-// -------------------------------------------- collection -----------------------------------------------------------------
+// -------------------------------------------- collection -------------------------------------------------------------
 const providerModel = require("../module/loungeProviderSchema")
 const loungeRegistration = require("../module/loungeModelSchema");
 const shopProviderSchema = require('../module/shopProviderSchema');
@@ -16,7 +16,7 @@ const shopItems = require('../module/shopItems');
 const Otp = require('../module/otp');
 const crypto =require("crypto")
 const nodemailer = require('nodemailer');
-const isLoggedIn = require('./../module/isLoggedIn')
+const { isLoggedIn } = require('./../module/isLoggedIn')
 
 const moment = require('moment');
 const schedule = require('node-schedule');
@@ -241,14 +241,14 @@ router.post('/logout',(req,res,next)=>{
   );
 })
 
-router.post('/choiceFilling',  async (req, res, next)=>{
+router.post('/choiceFilling',    async (req, res, next)=>{
   const stationName = req.body.stationName
   const bedCount = req.body.bedCount;
   let hours = req.body.hours
 
   let checkin1 = req.body.checkIn
   let dateF = moment(checkin1).format('YYYY-MM-DDTHH:mm:ss.SSSZ')
-let UTC_futureDate = moment(dateF).utc().add(hours, 'hours')
+  let UTC_futureDate = moment(dateF).utc().add(hours, 'hours')
 
   myDate = UTC_futureDate ;
   let launges = await loungeRegistration.find({stationLocation: stationName})
@@ -257,7 +257,7 @@ let UTC_futureDate = moment(dateF).utc().add(hours, 'hours')
 } )
 
 
-router.post('/choosen/:id',  async (req,res,next)=>{
+router.post('/choosen/:id', isLoggedIn,  async (req,res,next)=>{
 
 let launge = await loungeRegistration.findOne({ _id: req.params.id})
 let laungeName = launge.loungeName;
@@ -674,7 +674,7 @@ router.post('/reset-shop-provider', async (req, res) => {
     
     // Save the updated user data
     await user.save();
-    console.log("khilesh"+ user)
+    // console.log("khilesh"+ user)
 
     // Delete the OTP data (since it's no longer needed)
     // await otpData.remove();

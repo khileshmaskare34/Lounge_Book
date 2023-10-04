@@ -1,17 +1,24 @@
 const jwt = require('jsonwebtoken');
 
 const isLoggedIn = async function (req, res, next) {
-  const token = req.cookies.token;
-  if (!token) {
-    return res.status(401).render('login', { error: 'please login first!' });
+  const token = req.cookies.Token;
+  if(token){
+    jwt.verify(token, "mynameispulkitupadhyayfromharda", (err, decodedToken)=>{
+      if(err){
+        console.log(err.message);
+        res.redirect('/login');
+      }
+      else{
+        console.log(decodedToken);
+        next();
+      }
+    });
+    // return res.status(401).render('login', { error: 'please login first!' });
   }
-  
-    const { id } = jwt.verify(token, 'mynameispulkitupadhyayfromharda');
-    console.log( "id id id hai bhai"+ id)
-    // req.id = id;
-    next();
-    // Handle token verification error
-    return res.status(401).render('login', { error: 'Invalid token, please login again!' });
+  else{
+    res.redirect('/login');
   }
+ 
+}
 
-module.exports = isLoggedIn;
+module.exports = { isLoggedIn };
